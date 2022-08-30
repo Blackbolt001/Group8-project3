@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 const Home = () => {
 
     return(
-        <div>
+        <div> 
             {Auth.loggedIn()
                 // Displays page info if logged in
                 ? (
