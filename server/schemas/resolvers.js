@@ -17,7 +17,7 @@ const resolvers = {
     }
   },
 
-    Mutation: {
+  /*   Mutation: {
 
       login: async( parent, {email,password}) => {
         const owner = await Owner.findOne({email});
@@ -49,7 +49,7 @@ return {token,owner};
      // return like;
   },
 
-  savePet: async(parent,{petSchema},context) => {
+ savePet: async(parent,{petSchema},context) => {
     if(context.owner) {
       const owner = await Owner.findByIdAndDelete(
         {_id:context.owner._id},
@@ -69,7 +69,7 @@ removePet: async(parent,{pet_Id}, context) => {
     );
     return owner;
   }
-  throw new AuthenticationError('didnt say the magic word');
-},},},};
+  throw new AuthenticationError('didnt say the magic word');*/
+}}
   
 module.exports = resolvers;

@@ -1,11 +1,14 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
-
+import SwipeCard from '../components/SwipeCard'
 const Home = () => {
-
+console.log("seeing home")
     return(
         <div> 
+            <div>
+             <SwipeCard/>
+                    </div>
             {Auth.loggedIn()
                 // Displays page info if logged in
                 ? (
@@ -14,7 +17,7 @@ const Home = () => {
                     </div>
                 ) : (
                     // Takes user to login page if not logged in
-                    Navigate('/Login')
+                  console.log("no")
             )}
         </div>
     )
