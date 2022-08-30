@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
 const Header = () => {
-// Add Auth to check for logged in status
+
     return(
         <header classNme="">
             <div className="">
+
                 {/* Add ternary operator to check for logged in to show log in/out buttons */}
             </div>   
         </header>
