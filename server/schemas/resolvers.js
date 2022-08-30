@@ -1,6 +1,6 @@
 const { Pet,Owner } = require('../models');
 const {signToken} = require('../utils/auth');
-const {AuthenticationError, UserInputError} = require("apollo-server-express");
+const {AuthenticationError} = require("apollo-server-express");
 
 const resolvers = {
   Query: {
