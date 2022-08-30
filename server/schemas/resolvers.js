@@ -11,13 +11,9 @@ const resolvers = {
       }
       throw new AuthenticationError('');
     },
-  pet: async (parent,args,context) => {
-    if(context.pet) {
-      return Owner.findOne({_id:context.pet_id});
-    }
   },
 
-  /*   Mutation: {
+  Mutation: {
 
       login: async( parent, {email,password}) => {
         const owner = await Owner.findOne({email});
@@ -39,6 +35,8 @@ return {token,owner};
       const owner = await Owner.create({username,email,password});
       const token = signToken(owner);
       return {token,owner};
+
+   
     
     //createlike: async (parent, { _id, owner_id }) => {
       //const like = await owner.findOneAndUpdate(
@@ -69,7 +67,8 @@ removePet: async(parent,{pet_Id}, context) => {
     );
     return owner;
   }
-  throw new AuthenticationError('didnt say the magic word');*/
-}}
+
+  throw new AuthenticationError('didnt say the magic word');
+},},};
   
 module.exports = resolvers;
