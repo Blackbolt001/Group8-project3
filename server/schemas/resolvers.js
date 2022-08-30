@@ -53,7 +53,7 @@ return {token,owner};
     if(context.owner) {
       const owner = await Owner.findByIdAndDelete(
         {_id:context.owner._id},
-        {$addtoSet: {savedPets:pet}},
+        {$addtoSet: {savedPets:Pet}},
         {new:true}
       );
       return owner;
@@ -64,7 +64,7 @@ removePet: async(parent,{pet_Id}, context) => {
   if(context.owner) {
     const owner = await Owner.findByIdAndUpdate(
       {_id:context.owner._id},
-      {$pull:{savedPets:{petId}}},
+      {$pull:{savedPets:{pet_Id}}},
       {new:true}
     );
     return owner;
