@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String!
     username: String!
     password: String!
-    age:
+    age: Int
     interests: String!
     pet: [Pet]
   }
@@ -21,14 +21,10 @@ const typeDefs = gql`
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    owner: [Owner]
+    pet(_id: String): [Pet]
   }
 
-  type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-  }
 `;
 
 module.exports = typeDefs;
