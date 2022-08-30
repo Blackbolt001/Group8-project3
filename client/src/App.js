@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-
-import Header from './components/header';
+import Header from './components';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ChatHome from './pages/ChatHome';

@@ -5,7 +5,12 @@ import SwipeCard from '../components/SwipeCard'
 const Swipe = () => {
 
     return(
-        <div> 
+        
+        <div className='bg-red-200'> 
+        <h1 className="text-2xl underline text-cyan-100">
+      Hello world!
+    </h1>
+        yesh
              <SwipeCard/>
         </div>
     )
