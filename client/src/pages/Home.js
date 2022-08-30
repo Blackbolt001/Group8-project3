@@ -1,11 +1,11 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
 const Home = () => {
 
     return(
-        <div>
+        <div> 
             {Auth.loggedIn()
                 // Displays page info if logged in
                 ? (
