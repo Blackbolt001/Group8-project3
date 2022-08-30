@@ -5,22 +5,21 @@ const petSchema = new Schema({
         type: String,
         required: true
     },
-    Breed: {
+    breed: {
         type: String,
         required: true,
     },
-    Age: {
+    age: {
         type: Number
     },
-    Nature: {
+    nature: {
         type: String
     },
-    Gender: {
+    gender: {
         type: String,
         required: true,
     },
 })
 
-const Pet = model('Pet', petSchema);
 
-module.exports = Pet;
+module.exports = petSchema;
