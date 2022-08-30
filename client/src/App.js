@@ -20,7 +20,10 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Header />
+          {
+            // Header doesn't show on login page
+            window.location.pathname!=='/login' ? <Header/> : null
+          }
           <div className="container">
             <Routes>
               {/* Home page with profile cards */}
