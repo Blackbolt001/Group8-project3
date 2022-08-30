@@ -13,10 +13,12 @@ const typeDefs = gql`
     interests: String!
     pet: [Pet]
   }
-type Auth {
-  token:ID!
-  owner:Owner
-}
+
+  type Auth {
+    token:ID!
+    owner:Owner
+  }
+
   type Pet {
     pet_id: ID!
     pet_name: String!
@@ -25,6 +27,7 @@ type Auth {
     nature: String!
     gender: String!
   }
+
   input petInput {
     pet_id: ID!
     pet_name: String!
@@ -39,13 +42,13 @@ type Auth {
     me:Owner
     pet(_id: String): [Pet]
   }
-  type Mutation {
-    addOwner(username:String!,email:String!,password:String!):Auth
-    login(email:String!,password:String!):Auth
-    savePet(pet:petInput!):Owner
-    removePet(petId:ID!):Owner
-  }
 
+  type Mutation {
+    addOwner(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    savePet(pet: petInput!): Owner
+    removePet(petId: ID!): Owner
+  }
 `;
 
 module.exports = typeDefs;
