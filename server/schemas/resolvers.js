@@ -1,29 +1,30 @@
-const { Tech, Matchup } = require('../models');
+const { pet,owner } = require('../models');
 
 const resolvers = {
   Query: {
-    tech: async () => {
-      return Tech.find({});
+    owner: async () => {
+      return owner.find({});
     },
-    matchups: async (parent, { _id }) => {
+  pet: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
-      return Matchup.find(params);
+      return pet.find(params);
     },
   },
-  Mutation: {
-    createMatchup: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
+  /*Mutation: {
+    createOwner: async (parent, args) => {
+      const owner = await owner.create(args);
+      return owner;
     },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
+    createlike: async (parent, { _id, owner_id }) => {
+      const like = await owner.findOneAndUpdate(
         { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
+        { $inc: { [`tech_likes`]: 1 } },
         { new: true }
       );
-      return vote;
+      return like;
     },
   },
+  */
 };
 
 module.exports = resolvers;
