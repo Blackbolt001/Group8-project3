@@ -1,10 +1,10 @@
-const { Pet,Owner } = require('../models');
+const { Pet, Owner } = require('../models');
 const {signToken} = require('../utils/auth');
 const {AuthenticationError} = require("apollo-server-express");
 
 const resolvers = {
   Query: {
-    owner: async (parent,args,context) => {
+    owner: async (parent, args, context) => {
       if(context.owner) {
         return Owner.findOne({_id:context.owner_id})
         .populate('savedPets');
@@ -71,6 +71,5 @@ removePet: async(parent,{pet_Id}, context) => {
   }
   throw new AuthenticationError('didnt say the magic word');
 },},},};
-
   
 module.exports = resolvers;
