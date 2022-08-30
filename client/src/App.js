@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
+import Header from './components/header';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ChatHome from './pages/ChatHome';
@@ -19,33 +20,36 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Routes>
-            {/* Home page with profile cards */}
-            <Route 
-              path="/" 
-              element={<Home />}
-            />
-            {/* Login page */}
-            <Route 
-              path="/login" 
-              element={<Login />}
-            />
-            {/* Shows all chats with user's matches */}
-            <Route 
-              path="/chats"
-              element={<ChatHome />}
-            />
-            {/* Specific chats with other users */}
-            <Route 
-              path="/chat/:ownerid" 
-              element={<Chat />}
-            />
-            {/* User's profile. Can update info here */}
-            <Route 
-              path="/profile/:ownerId" 
-              element={<Profile />}
-            />
-          </Routes>
+          <Header />
+          <div className="container">
+            <Routes>
+              {/* Home page with profile cards */}
+              <Route 
+                path="/" 
+                element={<Home />}
+              />
+              {/* Login page */}
+              <Route 
+                path="/login" 
+                element={<Login />}
+              />
+              {/* Shows all chats with user's matches */}
+              <Route 
+                path="/chats"
+                element={<ChatHome />}
+              />
+              {/* Specific chats with other users */}
+              <Route 
+                path="/chat/:ownerid" 
+                element={<Chat />}
+              />
+              {/* User's profile. Can update info here */}
+              <Route 
+                path="/profile/:ownerId" 
+                element={<Profile />}
+              />
+            </Routes>
+          </div>
         </div>
       </Router>
     </ApolloProvider>
