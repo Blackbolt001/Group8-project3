@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import ChatHome from './pages/ChatHome';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
-
+import Swipe from './pages/Swipe';
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -35,6 +35,10 @@ function App() {
               <Route 
                 path="/login" 
                 element={<Login />}
+              />
+                <Route 
+                path="/swipe" 
+                element={<Swipe />}
               />
               {/* Shows all chats with user's matches */}
               <Route 
