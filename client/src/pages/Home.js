@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import Auth from '../../utils/auth';
 
 const Home = () => {
+
     return(
         <div>
             {Auth.loggedIn()
