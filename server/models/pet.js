@@ -5,6 +5,10 @@ const petSchema = new Schema({
         type: String,
         required: true
     },
+    pet_Id: {
+        type:String,
+        required: true,
+    },
     breed: {
         type: String,
         required: true,
