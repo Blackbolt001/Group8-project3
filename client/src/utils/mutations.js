@@ -16,7 +16,7 @@ export const CREATE_OWNER = gql`
 
 export const CREATE_PET = gql`
   mutation createVote($petname: String!,$breed: String!, $age: Int, $nature: String!, $Gender: String!) {
-    createVote(petname:$petname, breed: $breed, age: $age, nature:$nature, gender:$gender) {
+    createVote(petname:$petname, breed: $breed, age: $age, nature:$nature, gender:$ge) {
       _id
       pet_name
       breed
