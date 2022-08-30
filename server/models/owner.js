@@ -19,10 +19,10 @@ const ownerSchema = new Schema({
         type: Number,
         required: true,
     },
-    Interests: {
+    interests: {
         type: String,
     },
-    Pet: [
+    pet: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Pet'
