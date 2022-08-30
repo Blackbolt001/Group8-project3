@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_OWNER } from '../utils/mutations';
+import { CREATE_OWNER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
@@ -11,7 +11,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addOwner, { error, data }] = useMutation(ADD_OWNER);
+  const [addOwner, { error, data }] = useMutation(CREATE_OWNER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

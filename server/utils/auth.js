@@ -24,12 +24,10 @@ module.exports = {
     return req;
 
    },
-    signToken: function ({ username, email, _id }) {
+  signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
-    const token = jwt.sign({data:payload}, secret, {
-      expiresIn:expiration,
-     });
+    const token = jwt.sign({data:payload}, secret);
     return token;
-    },
-  };
+  },
+};
   

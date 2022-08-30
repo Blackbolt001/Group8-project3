@@ -16,8 +16,10 @@ console.log("seeing home")
                         <h1>This is the Home page</h1>
                     </div>
                 ) : (
-                    // Takes user to login page if not logged in
-                  console.log("no")
+                    <div>
+                        {/* Takes user to login page if not logged in */}
+                        <Navigate to='/Login' replace={true} />
+                    </div>
             )}
         </div>
     )

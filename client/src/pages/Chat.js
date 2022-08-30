@@ -13,8 +13,10 @@ const Chat = () => {
                         <h1>This is the Chat page</h1>
                     </div>
                 ) : (
-                    // Takes user to login page if not logged in
-                    Navigate('/Login')
+                    <div>
+                        {/* Takes user to login page if not logged in */}
+                        <Navigate to='/Login' replace={true} />
+                    </div>
             )}
         </div>
     )
