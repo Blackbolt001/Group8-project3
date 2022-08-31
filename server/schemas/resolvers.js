@@ -1,39 +1,68 @@
-const { Pet, Owner } = require('../models');
+const { AuthenticationError } = require("apollo-server-express");
+const { Pet, Owner,Chat, message } = require('../models');
 const {signToken} = require('../utils/auth');
-const {AuthenticationError} = require("apollo-server-express");
 
 const resolvers = {
   Query: {
-    owner: async (parent, args, context) => {
-      if(context.owner) {
-        return Owner.findOne({_id:context.owner_id})
-        .populate('savedPets');
-      }
-      throw new AuthenticationError('');
+    // owners: async () => {
+    //   return User.find().populate('pet');
+    // },
+    owner: async (parent, { username }) => {
+      return Owner.findOne({ username }).populate('pet')
     },
+
+    chat: async (parent, { username }) => {
+      return Chat.findOne({ username }).populate('message')
+    },
+    // owner: async (parent, args, context) => {
+    //   if(context.owner) {
+    //     return Owner.findOne({ _id: context.owner._id })
+    //     .populate('savedPets');
+    //   }
+    //   throw new AuthenticationError('');
+    // },
+    pet: async (parent, { petId }) => {
+      return Pet.findOne({ _id: petId });
+    },
+    // pet: async (parent, args, context) => {
+    //   if(context.pet) {
+    //     return Pet.findOne({ _id: context.Owner._id });
+    //   }
+    // },
+    // user: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return Owner.findOne({ _id: context.owner._id }).populate('pet');
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
   },
 
-    Mutation: {
+  Mutation: {
+    login: async( parent, {email, password}) => {
+      const owner = await Owner.findOne({email});
 
-      login: async( parent, {email,password}) => {
-        const owner = await Owner.findOne({email});
+      if(!owner) {
+          throw new AuthenticationError('Owner not found');
+      }
 
-        if(!owner) {
-            throw new AuthenticationError('Owner not found');
-}
+      const correctPw = await owner.isCorrectPassword(password);
 
-        const correctPw = await owner.isCorrectPassword(password);
+      if(!correctPw) {
+        throw new AuthenticationError('Didnt say the magic word!');
+      }
 
-            if(!correctPw) {
-                throw new AuthenticationError('Didnt say the magic word!');
-}
-const token = signToken(owner);
-return {token,owner};
+      const token = signToken(owner);
+      return { token, owner };
+    },
+    createChat: async (parent, args) => {
+      const chat = await Chat.create(args);
+      return chat
     },
 
-    addOwner: async (parent,{username,email,password}) => {
-      const owner = await Owner.create({username,email,password});
+    addOwner: async (parent, {username, email, password}) => {
+      const owner = await Owner.create({username, email, password});
       const token = signToken(owner);
+<<<<<<< HEAD
       return {token,owner}
     },
 
@@ -45,15 +74,22 @@ return {token,owner};
 
    
     
+=======
+      return {token, owner};
+      
+  
+>>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
     //createlike: async (parent, { _id, owner_id }) => {
       //const like = await owner.findOneAndUpdate(
         //{ _id },
-       // { $inc: { [`tech_likes`]: 1 } },
+      // { $inc: { [`tech_likes`]: 1 } },
         //{ new: true }
-     // );
-     // return like;
+    // );
+    // return like; 
   },
+ 
 
+<<<<<<< HEAD
   //savePet: async(parent,{pet},context) => {
    // if(context.owner) {
      // const owner = await Owner.findByIdAndDelete(
@@ -74,6 +110,31 @@ return {token,owner};
    // return owner;
   //}
  // throw new AuthenticationError('didnt say the magic word');
+=======
+    savePet: async(parent, {petSchema} ,context) => {
+      if(context.owner) {
+        const owner = await Owner.findByIdAndDelete(
+          {_id:context.owner._id},
+          {$addtoSet: {savedPets:Pet}},
+          {new:true}
+        );
+        return owner;
+      }
+      throw new AuthenticationError('You Didnt say the magic word');
+    },
+    removePet: async(parent, {pet_Id}, context) => {
+      if(context.owner) {
+        const owner = await Owner.findByIdAndUpdate(
+          {_id:context.owner._id},
+          {$pull:{savedPets:{pet_Id}}},
+          {new:true}
+        );
+        return owner;
+      }
+      throw new AuthenticationError("didn't say the magic word");
+    },
+  },
+>>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
 };
   
 module.exports = resolvers;
