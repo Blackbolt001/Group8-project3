@@ -18,7 +18,7 @@ function refreshMessages() {
   );
 }
 
-export default function FixedBottomNavigation() {
+export default function Messages() {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef(null);
   const [messages, setMessages] = React.useState(() => refreshMessages());

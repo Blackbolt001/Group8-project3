@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react'
+import background from './Courses.PNG'
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
 const db = [
@@ -76,9 +77,10 @@ function SwipeCard () {
         href='https://fonts.googleapis.com/css?family=Alatsi&display=swap'
         rel='stylesheet'
       />
-      <h1>React Tinder Card</h1>
+      <h1>Meet New PlayPals!</h1>
       <div className='cardContainer'>
         {db.map((character, index) => (
+          <div>
           <TinderCard
             ref={childRefs[index]}
             className='swipe'
@@ -87,12 +89,13 @@ function SwipeCard () {
             onCardLeftScreen={() => outOfFrame(character.name, index)}
           >
             <div
-              style={{ backgroundImage: 'url(' + character.url + ')' }}
+              style={{ backgroundImage: `url(${background})` }}
               className='card'
             >
               <h3>{character.name}</h3>
             </div>
           </TinderCard>
+            </div>
         ))}
       </div>
       <div className='buttons'>
