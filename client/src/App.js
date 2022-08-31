@@ -87,7 +87,7 @@ function App() {
               />
               {/* User's profile. Can update info here */}
               <Route 
-                path="/profile/:ownerId" 
+                path="/profile" 
                 element={<>
                   <Header />
                   <Profile />
