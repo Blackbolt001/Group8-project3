@@ -1,16 +1,4 @@
 import { gql } from '@apollo/client';
-
-
-
-export const UPDATE_OWNER = gql`
-  mutation createOwner($name: String!, $username: String!,$password: String!, $age: Int, $interests: String!, $pet: [Pet]) {
-    createMatchup(name: $name, username: $username,password: $password, age: $age, interests: $interests, pet: $pet) {
-` 
-
-export const ADD_OWNER = gql`
-  mutation addOwner($name: String!, $username: String!, $email: String!, $password: String!, $age: Int, $interests: String!, $pet: [Pet]) {
-    addOwner(name: $name, username: $username, email: $email, password: $password, age: $age, interests: $interests, pet: $pet) {
-`
 export const CREATE_OWNER = gql`
   mutation createOwner($name: String!, $username: String!, $email: String!, $password: String!, $age: Int, $interests: String!, $pet: [Pet]) {
     createOwner(name: $name, username: $username, email: $email, password: $password, age: $age, interests: $interests, pet: $pet) {
@@ -65,7 +53,6 @@ export const LOGIN_USER = gql`
       }
     }
   }
-<<<<<<< HEAD
 `;
 
 export const CREATE_CHAT = gql`
