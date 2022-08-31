@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { useMutation } from '@apollo/client';
 import { CREATE_OWNER } from '../utils/mutations';
 
