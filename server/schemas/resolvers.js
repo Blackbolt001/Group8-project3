@@ -110,7 +110,7 @@ const resolvers = {
    // );
    // return owner;
   //}
-
+/*
     savePet: async(parent, {petSchema} ,context) => {
       if(context.owner) {
         const owner = await Owner.findByIdAndUpdate(
@@ -133,6 +133,7 @@ const resolvers = {
       }
       throw new AuthenticationError("didn't say the magic word");
     },
+    */
   };
 
   
