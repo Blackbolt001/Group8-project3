@@ -44,6 +44,7 @@ type Auth {
     login(email:String!,password:String!):Auth
     savePet(pet:petInput!):Owner
     removePet(petId:ID!):Owner
+    addPet(pet_name:String!):Owner
   }
 
 `;

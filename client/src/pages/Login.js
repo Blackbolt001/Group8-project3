@@ -31,7 +31,7 @@ const Login = (props) => {
 
       Auth.login(data.login.token);
       // Navigates to home page after login
-      Navigate('/Home')
+      Navigate('/')
     } catch (e) {
       console.error(e);
     }

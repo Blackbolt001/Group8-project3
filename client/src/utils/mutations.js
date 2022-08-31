@@ -53,6 +53,20 @@ mutation removePet($pet_Id:ID!) {
 }
 } 
 ` ;
+export const REMOVE_OWNER = gql`
+mutation removeOwner($ownerId:ID!) {
+  removeOwner(ownerId:$ownerId){
+    name
+    username
+    savedOwners {
+      age
+      interests
+      pets
+    }
+  }
+}
+`;
+
 export const SAVE_PET = gql`
 mutation savePet($petData:petData!) {
   savePet(petData:$petData) {

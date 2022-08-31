@@ -4,11 +4,26 @@ export const getSavedPetIds = () => {
     : [];
     return getSavedPetIds;
 };
-export const savedPetIds = (pet_IdIdArr) => {
-    if(pet_IdIdArr.length) {
-        localStorage.setItem('saved_pets',JSON.stringify(pet_IdIdArr));
+
+export const getSavedOwnerIds = () => {
+    const getSavedOwnerIds = localStorage.getItem('saved_owners')
+    ?JSON.parse(localStorage.getItem('saved_owners'))
+    :[];
+};
+
+export const savedPetIds = (pet_IdArr) => {
+    if(pet_IdArr.length) {
+        localStorage.setItem('saved_pets',JSON.stringify(pet_IdArr));
     }else {
         localStorage.removeItem('saved_pets');
+    }
+};
+
+export const savedOwnerIds = (ownerIdArr) => {
+    if(ownerIdArr.length) {
+        localStorage.setItem('saved_owners',JSON.stringify(ownerIdArr));
+    }else {
+        localStorage.removeItem('saved_owners');
     }
 };
 
