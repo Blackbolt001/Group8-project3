@@ -58,18 +58,14 @@ const typeDefs = gql`
     owner: [Owner]
     me:Owner
     pet(_id: String): [Pet]
-<<<<<<< HEAD
   }
+  
   type Mutation {
     addOwner(username:String!,email:String!,password:String!):Auth
     login(email:String!,password:String!):Auth
     savePet(pet:petInput!):Owner
     removePet(petId:ID!):Owner
     addPet(pet_name:String!):Owner
-=======
-    chat: [Chat]
-    message(_id: String): [Message]
->>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
   }
 
   type Mutation {
