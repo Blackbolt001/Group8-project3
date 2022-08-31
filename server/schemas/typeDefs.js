@@ -14,6 +14,12 @@ const typeDefs = gql`
     pet: [Pet]
   }
 
+  type Chat {
+    _id: ID!
+    user_1: String!
+    user_2:String!
+   messages: [Message]
+  }
   type Auth {
     token:ID!
     owner:Owner
@@ -28,6 +34,12 @@ const typeDefs = gql`
     gender: String!
   }
 
+  type Message {
+   message_id: ID!
+  content: String!
+  username: String!
+  }
+
   input petInput {
     pet_id: ID!
     pet_name: String!
@@ -36,11 +48,18 @@ const typeDefs = gql`
     nature: String!
     gender: String!
   }
+  input messageInput {
+    message_id: ID!
+    content: String!
+    username: String!
+  }
 
   type Query {
     owner: [Owner]
     me:Owner
     pet(_id: String): [Pet]
+    chat: [Chat]
+    message(_id: String): [Message]
   }
 
   type Mutation {
@@ -48,6 +67,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     savePet(pet: petInput!): Owner
     removePet(petId: ID!): Owner
+    createChat(user_1:String!, user_2: String!): Chat
+    createMessage(messages: messageInput!): Chat
+
   }
 `;
 

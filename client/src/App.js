@@ -1,38 +1,17 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { setContext } from '@apollo/client/link/context';
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink, } from '@apollo/client';
-
-import Header from './components/header';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import Header from './components';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ChatHome from './pages/ChatHome';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
-
-// Constructs main GraphQL API endpoint
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
-
-// Construct request middleware that will attach the JWT token to every request as an `authorization` header
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
+import Swipe from './pages/Swipe';
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
+  uri: '/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -57,10 +36,14 @@ function App() {
                 path="/login" 
                 element={<Login />}
               />
+
               {/* Login page */}
               <Route 
                 path="/signup" 
                 element={<Signup />}
+                <Route 
+                path="/swipe" 
+                element={<Swipe />}
               />
               {/* Shows all chats with user's matches */}
               <Route 
