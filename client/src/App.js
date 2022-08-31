@@ -5,6 +5,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Header from './components';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import ChatHome from './pages/ChatHome';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
@@ -21,7 +22,7 @@ function App() {
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           {
             // Header doesn't show on login page
-            window.location.pathname!=='/login' ? <Header/> : null
+            window.location.pathname!=='/login' || '/signup' ? <Header/> : null
           }
           <div className="container">
             <Routes>
@@ -35,6 +36,11 @@ function App() {
                 path="/login" 
                 element={<Login />}
               />
+
+              {/* Login page */}
+              <Route 
+                path="/signup" 
+                element={<Signup />}
                 <Route 
                 path="/swipe" 
                 element={<Swipe />}

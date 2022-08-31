@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const CREATE_OWNER = gql`
+export const UPDATE_OWNER = gql`
   mutation createOwner($name: String!, $username: String!,$password: String!, $age: Int, $interests: String!, $pet: [Pet]) {
     createMatchup(name: $name, username: $username,password: $password, age: $age, interests: $interests, pet: $pet) {
       _id
@@ -10,6 +10,18 @@ export const CREATE_OWNER = gql`
       age
       interests
       pet
+    }
+  }
+`;
+
+export const CREATE_OWNER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
 `;
