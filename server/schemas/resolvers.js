@@ -34,7 +34,14 @@ return {token,owner};
     addOwner: async (parent,{username,email,password}) => {
       const owner = await Owner.create({username,email,password});
       const token = signToken(owner);
-      return {token,owner};
+      return {token,owner}
+    },
+
+     addPet: async (parent,{petname,owner}, context) => {
+      const pet = await Pet.add({petname,owner});
+      return {pet}
+
+     }
 
    
     
@@ -68,6 +75,6 @@ removePet: async(parent,{pet_Id}, context) => {
     return owner;
   }
   throw new AuthenticationError('didnt say the magic word');
-},},};
+},};
   
 module.exports = resolvers;

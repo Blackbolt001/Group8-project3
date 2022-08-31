@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
+import {setContext} from '@apollo/client/link/context';
 import Header from './components/header';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -10,8 +10,24 @@ import ChatHome from './pages/ChatHome';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
 
+import SavedOwners from './pages/SavedOwners';
+import SearchOwners from './pages/SearchOwners';
+import SearchPets from './pages/SearchPets';
+import SavedPets from './pages/SavedPets';
+
+const httplink = createHttpLink({uri:'/graphql',});
+
+const authLink = setContext((_,{headers}) => {
+const token = localStorage.getItem('id_token');
+return{
+  headers:{...headers,authorization:token?`Bearer $(token)`:'',}
+}
+},
+);
+
 const client = new ApolloClient({
-  uri: '/graphql',
+  link:authLink.concat(httplink),
+  
   cache: new InMemoryCache(),
 });
 
