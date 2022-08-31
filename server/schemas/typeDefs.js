@@ -62,18 +62,12 @@ const typeDefs = gql`
 
   }
   
-
-
-
-  
   type Mutation {
-    addOwner(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    savePet(pet: petInput!): Owner
-    addPet(pet: petInput!): Owner
-    removePet(petId: ID!): Owner
-    createChat(user_1:String!, user_2: String!): Chat
-    createMessage(messages: messageInput!): Chat
+    createOwner(username:String!,email:String!,password:String!):Auth
+    login(email:String!,password:String!):Auth
+    savePet(pet:petInput!):Owner
+    removePet(petId:ID!):Owner
+    addPet(pet_name:String!):Owner
   }
 `;
 
