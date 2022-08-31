@@ -79,8 +79,7 @@ const resolvers = {
 
      }
 
-   
-    
+
     //createlike: async (parent, { _id, owner_id }) => {
       //const like = await owner.findOneAndUpdate(
         //{ _id },
@@ -90,6 +89,7 @@ const resolvers = {
     // return like; 
   },
  
+
 
   //savePet: async(parent,{pet},context) => {
    // if(context.owner) {
@@ -111,6 +111,8 @@ const resolvers = {
    // return owner;
   //}
 /*
+=======
+>>>>>>> 492a2c6e902b7cc14a03ba12e8b7e0375ba30419
     savePet: async(parent, {petSchema} ,context) => {
       if(context.owner) {
         const owner = await Owner.findByIdAndUpdate(
@@ -133,8 +135,10 @@ const resolvers = {
       }
       throw new AuthenticationError("didn't say the magic word");
     },
+<<<<<<< HEAD
     */
   };
+
 
   
 module.exports = resolvers;
