@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Pet, Owner } = require('../models');
+const { Pet, Owner,Chat, message } = require('../models');
 const {signToken} = require('../utils/auth');
 
 const resolvers = {
@@ -9,6 +9,10 @@ const resolvers = {
     // },
     owner: async (parent, { username }) => {
       return Owner.findOne({ username }).populate('pet')
+    },
+
+    chat: async (parent, { username }) => {
+      return Chat.findOne({ username }).populate('message')
     },
     // owner: async (parent, args, context) => {
     //   if(context.owner) {
@@ -50,11 +54,16 @@ const resolvers = {
       const token = signToken(owner);
       return { token, owner };
     },
+    createChat: async (parent, args) => {
+      const chat = await Chat.create(args);
+      return chat
+    },
 
     addOwner: async (parent, {username, email, password}) => {
       const owner = await Owner.create({username, email, password});
       const token = signToken(owner);
       return {token, owner};
+      
   
     //createlike: async (parent, { _id, owner_id }) => {
       //const like = await owner.findOneAndUpdate(
@@ -62,8 +71,9 @@ const resolvers = {
       // { $inc: { [`tech_likes`]: 1 } },
         //{ new: true }
     // );
-    // return like;
-    },
+    // return like; 
+  },
+ 
 
     savePet: async(parent, {petSchema} ,context) => {
       if(context.owner) {
