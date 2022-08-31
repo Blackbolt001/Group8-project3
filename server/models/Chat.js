@@ -10,9 +10,13 @@ const chatSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'owner'
     },*/
-    user_1: {Type: String,
+    user_1: {
+        type: String,
+        required: true,
     },
-    user_2: {Type: String,
+    user_2: {
+        type: String,
+        required: true,
        }
     ,
   messages:  [{
