@@ -1,43 +1,39 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-<<<<<<< HEAD
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
-import {setContext} from '@apollo/client/link/context';
+import { setContext } from '@apollo/client/link/context';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+
 import Header from './components/header';
-=======
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Header from './components';
->>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ChatHome from './pages/ChatHome';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
-<<<<<<< HEAD
-
-import SavedOwners from './pages/SavedOwners';
-import SearchOwners from './pages/SearchOwners';
-import SearchPets from './pages/SearchPets';
-import SavedPets from './pages/SavedPets';
-
-const httplink = createHttpLink({uri:'/graphql',});
-
-const authLink = setContext((_,{headers}) => {
-const token = localStorage.getItem('id_token');
-return{
-  headers:{...headers,authorization:token?`Bearer $(token)`:'',}
-}
-},
-);
-
-=======
 import Swipe from './pages/Swipe';
->>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
+
+// Constructs main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
-  link:authLink.concat(httplink),
-  
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -46,45 +42,56 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          {
-            // Header doesn't show on login page
-            window.location.pathname!=='/login' || '/signup' ? <Header/> : null
-          }
           <div className="container">
             <Routes>
               {/* Home page with profile cards */}
               <Route 
                 path="/" 
-                element={<Home />}
+                element={<>
+                  <Header />
+                  <Home />
+                </>}
               />
               {/* Login page */}
               <Route 
                 path="/login" 
                 element={<Login />}
               />
-
-              {/* Login page */}
+              {/* Signup page */}
               <Route 
                 path="/signup" 
                 element={<Signup />}
-                <Route 
+              />
+              <Route 
                 path="/swipe" 
-                element={<Swipe />}
+                element={<>
+                  <Header />
+                  <Swipe />
+                </>}
               />
               {/* Shows all chats with user's matches */}
               <Route 
                 path="/chats"
-                element={<ChatHome />}
+                element={<>
+                  <Header />
+                  <ChatHome />
+                </>}
               />
               {/* Specific chats with other users */}
               <Route 
                 path="/chat/:ownerid" 
-                element={<Chat />}
+                element={<>
+                  <Header />
+                  <Chat />
+                </>}
               />
               {/* User's profile. Can update info here */}
               <Route 
                 path="/profile/:ownerId" 
-                element={<Profile />}
+                element={<>
+                  <Header />
+                  <Profile />
+                </>}
               />
             </Routes>
           </div>
@@ -95,3 +102,4 @@ function App() {
 }
 
 export default App;
+
