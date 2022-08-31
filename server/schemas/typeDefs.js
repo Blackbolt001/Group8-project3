@@ -17,7 +17,7 @@ const typeDefs = gql`
   type Chat {
     _id: ID!
     user_1: String!
-    user_2:String!
+    user_2: String!
    messages: [Message]
   }
   type Auth {
@@ -59,12 +59,13 @@ const typeDefs = gql`
     pet(_id: String): [Pet]
     chat: [Chat]
     message(_id: String): [Message]
-  }
 
+  }
   type Mutation {
     addOwner(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     savePet(pet: petInput!): Owner
+    addPet(pet: petInput!): Owner
     removePet(petId: ID!): Owner
     createChat(user_1:String!, user_2: String!): Chat
     createMessage(messages: messageInput!): Chat
