@@ -63,6 +63,10 @@ function App() {
                 element={<Signup />}
               />
               <Route 
+                path="/chat" 
+                element={<Chat />}
+              />
+              <Route 
                 path="/swipe" 
                 element={<>
                   <Header />
