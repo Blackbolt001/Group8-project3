@@ -59,7 +59,7 @@ const resolvers = {
     //   return chat
     // },
 
-    addOwner: async (parent, {username, email, password}) => {
+    createOwner: async (parent, {username, email, password}) => {
       const owner = await Owner.create({username, email, password});
       const token = signToken(owner);
       return {token,owner}
