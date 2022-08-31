@@ -1,4 +1,6 @@
 import { gql } from '@apollo/client';
+export const ADD_OWNER = gql`
+  mutation addOwner($name: String!, $username: String!,$password: String!, $age: Int, $interests: String!, $pet: [Pet]) {
 
 export const UPDATE_OWNER = gql`
   mutation createOwner($name: String!, $username: String!,$password: String!, $age: Int, $interests: String!, $pet: [Pet]) {
@@ -13,7 +15,7 @@ export const UPDATE_OWNER = gql`
     }
   }
 `;
-
+export const ADD_PET = gql`
 export const CREATE_OWNER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -50,3 +52,51 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const REMOVE_PET = gql`
+mutation removePet($pet_Id:ID!) {
+  removePet(pet_Id:$pet_Id) {
+    pet_Id
+    pet_name
+    savedPets {
+      breed
+      age
+      nature
+      gender
+  }
+}
+} 
+` ;
+export const REMOVE_OWNER = gql`
+mutation removeOwner($ownerId:ID!) {
+  removeOwner(ownerId:$ownerId){
+    name
+    username
+    savedOwners {
+      age
+      interests
+      pets
+    }
+  }
+}
+`;
+
+export const SAVE_PET = gql`
+mutation savePet($petData:petData!) {
+  savePet(petData:$petData) {
+    pet_Id
+    pet_name
+    savedPets {
+      breed
+      age
+      nature
+      gender
+    }
+  }
+}
+`;
+//export const SEARCH_OWNERS = gql`
+//export const SAVED_OWNERS
+//export const SEARCH_PETS 
+//export const SAVED_PETS
+//mutation searchOwner`
