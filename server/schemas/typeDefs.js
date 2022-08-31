@@ -36,8 +36,8 @@ const typeDefs = gql`
 
   type Message {
    message_id: ID!
-  content: String!
-  username: String!
+   content: String!
+   username: String!
   }
 
   input petInput {
@@ -49,7 +49,6 @@ const typeDefs = gql`
     gender: String!
   }
   input messageInput {
-    message_id: ID!
     content: String!
     username: String!
   }
@@ -69,7 +68,6 @@ const typeDefs = gql`
     removePet(petId: ID!): Owner
     createChat(user_1:String!, user_2: String!): Chat
     createMessage(messages: messageInput!): Chat
-
   }
 `;
 

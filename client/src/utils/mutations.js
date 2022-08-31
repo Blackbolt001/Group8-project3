@@ -38,3 +38,13 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const CREATE_CHAT = gql`
+mutation Mutation($user1: String!, $user2: String!) {
+  createChat(user_1: $user1, user_2: $user2) {
+    _id
+user_1
+user_2
+  }
+  }
+`;
