@@ -21,7 +21,7 @@ export const QUERY_PET = gql`
     pet_name
     breed
     age
-   nature
+    nature
     gender
     }
   }

@@ -11,7 +11,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addOwner, { error, data }] = useMutation(CREATE_OWNER);
+  const [createOwner, { error, data }] = useMutation(CREATE_OWNER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,11 +27,11 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await addOwner({
+      const { data } = await createOwner({
         variables: { ...formState },
       });
 
-      Auth.login(data.addOwner.token);
+      Auth.login(data.createOwner.token);
     } catch (e) {
       console.error(e);
     }

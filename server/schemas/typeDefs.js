@@ -4,8 +4,7 @@ const typeDefs = gql`
   type Owner {
     _id: ID!
     name: String!
-    email:String!
-    petCount:Int
+    email: String!
     savedPets: [Pet]
     username: String!
     password: String!
@@ -17,12 +16,13 @@ const typeDefs = gql`
   type Chat {
     _id: ID!
     user_1: String!
-    user_2:String!
-   messages: [Message]
+    user_2: String!
+    messages: [Message]
   }
+
   type Auth {
-    token:ID!
-    owner:Owner
+    token: ID!
+    owner: Owner
   }
 
   type Pet {
@@ -35,9 +35,9 @@ const typeDefs = gql`
   }
 
   type Message {
-   message_id: ID!
-  content: String!
-  username: String!
+    message_id: ID!
+    content: String!
+    username: String!
   }
 
   input petInput {
@@ -48,6 +48,7 @@ const typeDefs = gql`
     nature: String!
     gender: String!
   }
+
   input messageInput {
     message_id: ID!
     content: String!
@@ -61,7 +62,7 @@ const typeDefs = gql`
   }
   
   type Mutation {
-    addOwner(username:String!,email:String!,password:String!):Auth
+    createOwner(username:String!,email:String!,password:String!):Auth
     login(email:String!,password:String!):Auth
     savePet(pet:petInput!):Owner
     removePet(petId:ID!):Owner
@@ -69,13 +70,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addOwner(username: String!, email: String!, password: String!): Auth
+    createOwner(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     savePet(pet: petInput!): Owner
     removePet(petId: ID!): Owner
     createChat(user_1:String!, user_2: String!): Chat
     createMessage(messages: messageInput!): Chat
-
   }
 `;
 
