@@ -11,11 +11,14 @@ const messageSchema = new Schema({
     time:{
         type: Date,
     },
-    username: 
-       {
-        type: String,
-        required: true,
-       }
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'owner'
+    },
+       chat:{
+        type: Schema.Types.ObjectId,
+        ref: 'Chat'
+    }
 });
 const Message = model('Message', messageSchema);
 

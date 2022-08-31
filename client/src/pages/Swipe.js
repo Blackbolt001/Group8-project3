@@ -6,11 +6,7 @@ const Swipe = () => {
 
     return(
         
-        <div className='bg-red-200'> 
-        <h1 className="text-2xl underline text-cyan-100">
-      Hello world!
-    </h1>
-        yesh
+        <div>
              <SwipeCard/>
         </div>
     )

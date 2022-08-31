@@ -48,7 +48,6 @@ const typeDefs = gql`
   }
 
   input messageInput {
-    message_id: ID!
     content: String!
     username: String!
   }
@@ -57,6 +56,9 @@ const typeDefs = gql`
     owner: [Owner]
     me:Owner
     pet(_id: String): [Pet]
+    chat: [Chat]
+    message(_id: String): [Message]
+
   }
 
   type Mutation {

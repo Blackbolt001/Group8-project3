@@ -38,6 +38,7 @@ export const CREATE_PET = gql`
       }
     }
   }
+  }
 `;
 
 export const UPDATE_PET = gql`
