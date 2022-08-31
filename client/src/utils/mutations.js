@@ -1,36 +1,48 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_OWNER = gql`
-  mutation createOwner($name: String!, $username: String!, $email: String!, $password: String!, $age: Int, $interests: String!, $pet: ) {
-    createOwner(name: $name, username: $username, email: $email, password: $password, age: $age, interests: $interests, pet: $pet) {
+  mutation createOwner($username: String!, $email: String!, $password: String!) {
+    createOwner(username: $username, email: $email, password: $password) {
       _id
-      name
       username
       email
-      password
-      age
-      interests
-      pet
     }
   }
 `;
 
+// export const CREATE_PET = gql`
+//   mutation createPet($pet_name: String!, $breed: String!, $age: Int, $nature: String!, $gender: String!) {
+//     createPet(petname:$pet_name, breed: $breed, age: $age, nature: $nature, gender: $gender) {
+//       _id
+//       pet_name
+//       breed
+//       age
+//       nature
+//       gender
+//     }
+//   }
+// `;
+
 export const CREATE_PET = gql`
-  mutation createPet($petname: String!,$breed: String!, $age: Int, $nature: String!, $Gender: String!) {
-    createPet(petname:$petname, breed: $breed, age: $age, nature:$nature, gender:$ge) {
+  mutation createPet($pet: petInput!) {
+    createPet(pet: $pet) {
       _id
-      pet_name
-      breed
-      age
-      nature
-      gender
+      username
+      email
+      pet {
+        pet_name
+        breed
+        age
+        nature
+        gender
+      }
     }
   }
 `;
 
 export const UPDATE_PET = gql`
-  mutation createPet($petname: String!,$breed: String!, $age: Int, $nature: String!, $Gender: String!) {
-    createPet(petname: $petname, breed: $breed, age: $age, nature: $nature, gender: $gender) {
+  mutation updatePet($pet_name: String!,$breed: String!, $age: Int, $nature: String!, $gender: String!) {
+    updatePet(pet_name: $pet_name, breed: $breed, age: $age, nature: $nature, gender: $gender) {
       _id
       pet_name
       breed

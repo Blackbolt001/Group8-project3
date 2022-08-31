@@ -26,25 +26,3 @@ export const QUERY_PET = gql`
     }
   }
 `;
-export const GET_ME = gql`
-{   
-me
-    {
-      owner {
-        _id
-        name
-        username
-        age
-        interests
-        pet
-{
-  pet_id 
-    pet_name
-    breed
-    age
-   nature
-    gender
-    }
-  }
-}
-`;
