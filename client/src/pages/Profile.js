@@ -27,7 +27,7 @@ const Profile = () => {
                 ) : (
                     <div>
                         {/* Takes user to login page if not logged in */}
-                        <Navigate to='/Login' replace={true} />
+                        <Navigate to='/login' replace={true} />
                     </div>
             )}
         </div>
