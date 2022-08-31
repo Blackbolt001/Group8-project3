@@ -61,6 +61,11 @@ const typeDefs = gql`
     message(_id: String): [Message]
 
   }
+  
+
+
+
+  }
   type Mutation {
     addOwner(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
