@@ -22,7 +22,7 @@ const ownerSchema = new Schema({
     interests: {
         type: String,
     },
-    pet: [
+    pets: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Pet'

@@ -62,9 +62,23 @@ const resolvers = {
     addOwner: async (parent, {username, email, password}) => {
       const owner = await Owner.create({username, email, password});
       const token = signToken(owner);
+<<<<<<< HEAD
+      return {token,owner}
+    },
+
+     addPet: async (owner,{petname,breed}, context) => {
+      const pet = await Pet.add({petname,breed});
+      return {pet}
+
+     }
+
+   
+    
+=======
       return {token, owner};
       
   
+>>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
     //createlike: async (parent, { _id, owner_id }) => {
       //const like = await owner.findOneAndUpdate(
         //{ _id },
@@ -75,6 +89,28 @@ const resolvers = {
   },
  
 
+<<<<<<< HEAD
+  //savePet: async(parent,{pet},context) => {
+   // if(context.owner) {
+     // const owner = await Owner.findByIdAndDelete(
+       // {_id:context.owner._id},
+     //   {$addtoSet:{savedPets:pet}},
+    //  );
+     // return owner;
+// }
+ //   throw new AuthenticationError('You Didnt say the magic word');
+//},
+//removePet: async(parent,{pet_Id}, context) => {
+  //if(context.owner) {
+    //const owner = await Owner.findByIdAndUpdate(
+      //{_id:context.owner._id},
+      //{$pull:{savedPets:{pet_Id}}},
+     // {new:true}
+   // );
+   // return owner;
+  //}
+ // throw new AuthenticationError('didnt say the magic word');
+=======
     savePet: async(parent, {petSchema} ,context) => {
       if(context.owner) {
         const owner = await Owner.findByIdAndDelete(
@@ -98,6 +134,7 @@ const resolvers = {
       throw new AuthenticationError("didn't say the magic word");
     },
   },
+>>>>>>> 7ca59ad8982b82d7438c827a4e6fa0b615e3d880
 };
   
 module.exports = resolvers;

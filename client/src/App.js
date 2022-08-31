@@ -36,6 +36,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -101,3 +102,4 @@ function App() {
 }
 
 export default App;
+
