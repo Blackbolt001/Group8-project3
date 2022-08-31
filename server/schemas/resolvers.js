@@ -77,7 +77,7 @@ const resolvers = {
       const pet = await Pet.add({petname,breed});
       return {pet}
 
-     }
+     },
 
 
     //createlike: async (parent, { _id, owner_id }) => {
@@ -87,7 +87,7 @@ const resolvers = {
         //{ new: true }
     // );
     // return like; 
-  },
+  // },
  
 
 
@@ -137,7 +137,7 @@ const resolvers = {
     },
 <<<<<<< HEAD
     */
-  };
+  },}
 
 
   
