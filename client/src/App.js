@@ -83,7 +83,7 @@ function App() {
               />
               {/* Specific chats with other users */}
               <Route 
-                path="/chat/:ownerid" 
+                path="/chat/:id" 
                 element={<>
                   <Header />
                   <Chat />

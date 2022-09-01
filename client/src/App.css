@@ -6,7 +6,15 @@
     min-height: 100vh;
     overflow: hidden;
     /* background: linear-gradient(#fff, #999); */
-    background: linear-gradient(#e66465, #9198e5);
+
+    /* background: linear-gradient(#e66465, #9198e5); */
+    background-image: url('https://media.giphy.com/media/3osxYsSSxjWhZw0BUY/giphy.gif');
+    background-size: cover;
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-repeat: no-repeat;
+    background: linear-gradient(#85c7f7, #4ad753);
+
   }
   
   #root>div {

@@ -33,11 +33,11 @@ const typeDefs = gql`
   }
 
   type Message {
-   message_id: ID!
+   _id: ID!
    content: String!
    time: String
    user: String!
-   chat: [Chat]
+   chat: Chat
   }
 
   input petInput {
@@ -57,8 +57,8 @@ const typeDefs = gql`
     owner: [Owner]
     findOwnerById(_id: ID!): Owner
     pet(_id: String): Owner
-    chat: [Chat]
-    message(_id: String): [Message]
+    chat(user: String): [Chat]
+    message(user: String, chat: String): [Message]
   }
   
   type Mutation {

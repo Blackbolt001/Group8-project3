@@ -13,8 +13,17 @@ const resolvers = {
       return await Owner.findById(_id).populate('pet');
     },
 
-    chat: async (parent, { username }) => {
-      return await Chat.findOne({ username }).populate('messages');
+    chat: async (parent, { user }) => {
+     newchat = Chat.find(
+     { $or: [{user_1: user},{user_2: user}]});
+     return newchat
+    },
+    message: async (parent,{user, chat}) => {
+     
+      
+     test =  Message.find({user: user, chat: chat})
+     console.log(test)
+     return test
     },
 
     pet: async (parent, { _id }) => {
@@ -45,16 +54,14 @@ const resolvers = {
       return chat
     },
     createMessage: async (parent, args) => {
-      console.log(args)
-      console.log("done")
+      
       const message = await Message.create(args);
       const Chat1 = await Chat.findByIdAndUpdate(
         {_id:message.chat},
         {$push: {messages:message.id}},
         {new:true});
-        console.log("done")
-        console.log(Chat1)
-      return Chat1
+       
+      return message
     },
 
 
