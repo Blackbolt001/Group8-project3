@@ -13,18 +13,35 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CHAT } from '../utils/queries';
 
 const ChatHome = () => {
+
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    };
+
    let id = Auth.getProfile().data._id
     const { loading, data } = useQuery(QUERY_CHAT, {
         variables:{user: id}
       });
       const chatList = data?.chat || [];
 
+
     return(
         <div>
             {Auth.loggedIn()
-                // Displays chat info if logged in
+                // Displays profile info if logged in
                 ? (
                     <div>
+
+                        <h1>Chat Home Page</h1>
+                        
+                            {/* Logout button */}
+                            <div>
+                            <button className="" onClick={logout}>
+                                Logout
+                            </button>
+                        </div>
+
                {loading ? (
           <div>Loading...</div>
         ) : (
@@ -63,6 +80,7 @@ const ChatHome = () => {
               })}
           </form>
         )}
+
                     </div>
                 ) : (
                     <div>
