@@ -34,11 +34,11 @@ const typeDefs = gql`
   }
 
   type Message {
-   message_id: ID!
+   _id: ID!
    content: String!
    time: String
    user: String!
-   chat: [Chat]
+   chat: Chat
   }
 
   input petInput {
@@ -56,19 +56,22 @@ const typeDefs = gql`
 
   type Query {
     owner: [Owner]
-    me:Owner
+    me: Owner
     pet(_id: String): [Pet]
-    chat: [Chat]
-    message(_id: String): [Message]
+    chat(user: String): [Chat]
+    message(user: String, chat: String): [Message]
   }
 
   type Mutation {
-    createOwner(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    createOwner(username:String!,email:String!,password:String!):Auth
+    login(email:String!,password:String!):Auth
+    savePet(pet:petInput!):Owner
+    removePet(petId:ID!):Owner
     createPet(Pet: petInput!): Owner
     updatePet(Pet: petInput!): Owner
-    createChat(user_1: String!, user_2: String!): Chat
-    createMessage(messages: messageInput!): Chat
+    addPet(pet_name:String!):Owner
+    createChat(user_1:String!, user_2: String!): Chat
+    createMessage(content: String!, user: String!,chat: String!): Message
   }
 `;
 
