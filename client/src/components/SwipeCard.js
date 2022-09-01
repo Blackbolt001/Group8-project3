@@ -99,9 +99,9 @@ function SwipeCard () {
         ))}
       </div>
       <div className='buttons'>
-        <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('left')}>Swipe left!</button>
-        <button style={{ backgroundColor: !canGoBack && '#C3C4D3' }} onClick={() => goBack()}>Undo swipe!</button>
-        <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('right')}>Swipe right!</button>
+        <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('left')}>❌ Swipe left!</button>
+        <button style={{ backgroundColor: !canGoBack && '#C3C4D3' }} onClick={() => goBack()}>Undo!</button>
+        <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('right')}>✅ Swipe right!</button>
       </div>
       {lastDirection ? (
         <h2 key={lastDirection} className='infoText'>

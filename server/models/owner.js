@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// import schema from Book.js
+const petSchema = require('./pet');
+
 const ownerSchema = new Schema({
 
     username: {
@@ -11,6 +14,7 @@ const ownerSchema = new Schema({
     password: {
         type: String,
         required: true,
+        minLength: 6,
     },
     email:{
         type:String,
@@ -20,16 +24,13 @@ const ownerSchema = new Schema({
     },
     age: {
         type: Number,
+        minimum: [16, 'You must be at least 16 years old'],
+        maximum: [99, 'There is no way you are that old...'],
     },
     interests: {
         type: String,
     },
-    pets: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Pet'
-        }
-    ]
+    pet: [petSchema]
 });
 
 // set up pre-save middleware to create password
