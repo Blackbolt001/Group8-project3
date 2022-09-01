@@ -65,14 +65,17 @@ query Message($user: String, $chat: String) {
   message(user: $user, chat: $chat) {
     content
     user
+    _id
+    name
   }
 }
 `;
 export const QUERY_CHAT = gql`
-query Query {
-  chat {
+query Query($user: String) {
+  chat(user: $user) {
     user_1
     user_2
+    _id
   }
 }
 `;
