@@ -1,28 +1,29 @@
 import React, { useState, useMemo, useRef } from 'react'
-import background from './Courses.PNG'
+// import background from './Courses.PNG'
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
 import Info from './info'
+
 const db = [
   {
-    name: 'Richard Hendricks',
-    url: './img/richard.jpg'
+    name: 'Bill',
+    url: './test_images/Bill.jpg'
   },
   {
-    name: 'Erlich Bachman',
-    url: './img/erlich.jpg'
+    name: 'Torrence',
+    url: './test_images/Torrence.jpg'
   },
   {
-    name: 'Monica Hall',
-    url: './img/monica.jpg'
+    name: 'Will',
+    url: './test_images/Will.jpg'
   },
   {
-    name: 'Jared Dunn',
-    url: './img/jared.jpg'
+    name: 'Ray',
+    url: './test_images/Ray.jpg'
   },
   {
-    name: 'Dinesh Chugtai',
-    url: './img/dinesh.jpg'
+    name: 'Jill',
+    url: './test_images/Jill.jpg'
   }
 ]
 function SwipeCard () {
@@ -100,7 +101,7 @@ function SwipeCard () {
             onCardLeftScreen={() => outOfFrame(owner.name, index)}
           >
             <div
-              style={{ backgroundImage: `url(${background})` }}
+              style={{ backgroundImage: `url(${owner.url})` }}
               className='card'
             >
               <h3 className="name">{owner.name}</h3>
