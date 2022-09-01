@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const petSchema = new Schema({
     pet_name: {
@@ -18,13 +18,8 @@ const petSchema = new Schema({
     gender: {
         type: String,
         required: true,
-    },
-    owner: {
-        type:String,
-        required:true,
     }
     },
 )
-
 
 module.exports = petSchema;

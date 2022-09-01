@@ -37,7 +37,7 @@
     text-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
   }
   
-  h2 {
+  h2, h3, h4, h5, p{
     color: #fff;
   }
   
@@ -122,5 +122,11 @@
     64%  { transform: scale(1,1) }
     100% { transform: scale(1,1) }
   }
+
+.visible {
+    display: block;
+  }
   
-  
+.hidden {
+    display: none;
+  }

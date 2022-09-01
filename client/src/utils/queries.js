@@ -21,11 +21,12 @@ export const QUERY_PET = gql`
     pet_name
     breed
     age
-   nature
+    nature
     gender
     }
   }
 `;
+
 
 export const QUERY_MESSAGE = gql`
 query Message($user: String, $chat: String) {
@@ -66,4 +67,6 @@ me
     }
   }
 }
+}
 `;
+

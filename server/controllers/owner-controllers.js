@@ -2,9 +2,9 @@ const { Owner } = require('../models');
 const { signToken } = require('../utils/auth');
 
 module.exports = {
-  async getSingleOwner({ user = null, params }, res) {
+  async getSingleOwner({ owner = null, params }, res) {
     const foundOwner = await Owner.findOne({
-      $or: [{ _id: user ? owner._id : params.id }, { username: params.username }],
+      $or: [{ _id: owner ? owner._id : params.id }, { username: params.username }],
     });
 
     if (!foundOwner) {
