@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
 import SwipeCard from '../components/SwipeCard'
-import Info from '../components/info'
 
 const Home = () => {
     return(
