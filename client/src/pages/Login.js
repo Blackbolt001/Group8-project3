@@ -13,7 +13,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-    const Navigate = useNavigate();
+  const Navigate = useNavigate();
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { CREATE_OWNER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Signup = () => {
+  const Navigate = useNavigate();
   const [formState, setFormState] = useState({
     username: '',
     email: '',
@@ -31,6 +33,8 @@ const Signup = () => {
       });
 
       Auth.login(data.createOwner.token);
+      // Navigates new user to profile page
+      Navigate('/profile')
     } catch (e) {
       console.error(e);
     }

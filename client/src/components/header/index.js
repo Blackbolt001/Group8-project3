@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     return(
-        <header className="">
-            <div className="">
+        <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+            <div className="container flex-row justify-space-between-lg justify-center align-center">
                 <div>
                     <Link to="/profile">
-                        <h4>👤</h4>
+                        <h1>👤</h1>
                     </Link>
                 </div>
                 <div>
-                    <h2>Paws N' Play</h2>
+                    <Link to='/'>
+                        <h2>Paws N' Play</h2>
+                    </Link>
                 </div>
                 <div>
                     <Link to="/chats">
-                        <h4>💬</h4>
+                        <h1>💬</h1>
                     </Link>
                 </div>
             </div>   
