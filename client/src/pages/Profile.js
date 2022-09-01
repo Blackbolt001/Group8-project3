@@ -6,10 +6,6 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { UPDATE_PET} from '../utils/mutations';
 import ImgUpload from '../components/ImgUpload'
-import cn from "classnames";
-import { ReactComponent as Hand } from "./hand.svg";
-
-import "./styles.scss";
 
 const Profile = () => {
     const logout = (event) => {
