@@ -57,8 +57,6 @@ export const QUERY_OWNER_BY_ID = gql`
       }
     }
   }
-}
-}
 `;
 
 
