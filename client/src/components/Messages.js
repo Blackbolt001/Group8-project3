@@ -15,13 +15,14 @@ import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_MESSAGE, QUERY_CHAT } from '../utils/queries';
 import { CREATE_MESSAGE } from '../utils/mutations';
 import { useParams, Link } from 'react-router-dom';
-
+import Auth from '../utils/auth';
 export default function Messages() {
     let { id } = useParams();
+    const userlo = Auth.getProfile().data._id
     console.log(id)
     const [formData, setFormData] = useState("");
     const { loading, data } = useQuery(QUERY_MESSAGE, {
-        variables: { chat: id, user: "630fe9f17143386d751dc601" },
+        variables: { chat: id, user: userlo },
         pollInterval:300,
       });
   const [createMessage, { error }] = useMutation(CREATE_MESSAGE);
@@ -39,7 +40,7 @@ const Messagesubmit = async (event) => {
     try {
       const message = await createMessage({
         variables:{
-        content: formData ,name:"test",user:"630fea417143386d751dc602",chat:"6310b9d0ebfeac9be208302f"
+        content: formData ,name:"test",user:userlo,chat:id
       }});
     } catch (err) {
       console.error(err);

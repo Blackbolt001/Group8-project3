@@ -43,6 +43,7 @@ query Query($user: String) {
   chat(user: $user) {
     user_1
     user_2
+    _id
   }
 }
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -12,11 +13,11 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CHAT } from '../utils/queries';
 
 const ChatHome = () => {
-   
+   let id = Auth.getProfile().data._id
     const { loading, data } = useQuery(QUERY_CHAT, {
-        variables:{user:"63110f093cd88a1f51ec2a1f"}
+        variables:{user: id}
       });
-      const techList = data?.chat || [];
+      const chatList = data?.chat || [];
 
     return(
         <div>
@@ -28,15 +29,19 @@ const ChatHome = () => {
           <div>Loading...</div>
         ) : (
           <form >
-              {techList.map((tech) => {
+              {chatList.map((chat) => {
+                           console.log(chat)      
                 return (
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    <ListItem alignItems="flex-start">
+                    
+                    <ListItem key={chat._id} alignItems="flex-start">
+                    <Link to={{ pathname: `/chat/${chat._id}` }}>
                       <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                       </ListItemAvatar>
+                      
                       <ListItemText
-                        primary="Brunch this weekend?"
+                        primary="Get to know someone paw-some"
                         secondary={
                           <React.Fragment>
                             <Typography
@@ -45,12 +50,12 @@ const ChatHome = () => {
                               variant="body2"
                               color="text.primary"
                             >
-                              Ali Connors
                             </Typography>
-                            {" — I'll be in your neighborhood doing errands this…"}
+                           
                           </React.Fragment>
                         }
                       />
+                      </Link>
                     </ListItem>
                     <Divider variant="inset" component="li" />
                   </List>
