@@ -3,11 +3,9 @@ const { Schema } = require('mongoose');
 const petSchema = new Schema({
     pet_name: {
         type: String,
-        required: true
     },
     breed: {
         type: String,
-        required: true,
     },
     age: {
         type: Number
@@ -17,7 +15,6 @@ const petSchema = new Schema({
     },
     gender: {
         type: String,
-        required: true,
     }
     },
 )
