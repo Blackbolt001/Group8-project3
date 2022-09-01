@@ -16,9 +16,10 @@ const Profile = () => {
                 // Displays profile info if logged in
                 ? (
                     <div>
-                        <h1>This is the Profile page</h1>
-                        <div>
+                        <h1>Welcome to your profile page!</h1>
+                        
                             {/* Logout button */}
+                            <div>
                             <button className="" onClick={logout}>
                                 Logout
                             </button>

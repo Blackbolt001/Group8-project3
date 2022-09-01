@@ -3,14 +3,24 @@ import { Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
 
 const ChatHome = () => {
-
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    };
     return(
         <div>
             {Auth.loggedIn()
-                // Displays chat info if logged in
+                // Displays profile info if logged in
                 ? (
                     <div>
-                        <h1>This is the Chat Home page</h1>
+                        <h1>Chat Home Page</h1>
+                        
+                            {/* Logout button */}
+                            <div>
+                            <button className="" onClick={logout}>
+                                Logout
+                            </button>
+                        </div>
                     </div>
                 ) : (
                     <div>
