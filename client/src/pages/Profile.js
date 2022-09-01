@@ -1,9 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import {useState} from 'react';
 import { Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { UPDATE_PET} from '../utils/mutations';
+import ImgUpload from '../components/ImgUpload'
 
 const Profile = () => {
     const logout = (event) => {
@@ -63,13 +65,7 @@ const Profile = () => {
                     <div>
                         <h1>Your Profile Page</h1>
                         <div>
-                            {/* Logout button */}
-                            <button onClick={logout}>
-                                Logout
-                            </button>
-                        </div>
-                        <br></br>
-                        <div>
+                            <ImgUpload />
                             <button className='editPetButton btn btn-block btn-info' onClick={editPet}>
                                 Edit Pet Info
                             </button>
@@ -125,6 +121,13 @@ const Profile = () => {
                                     Save changes
                                 </button>
                             </form>
+                        </div>
+                        <br></br>
+                        <div>
+                            {/* Logout button */}
+                            <button onClick={logout}>
+                                Logout
+                            </button>
                         </div>
                     </div>
                 ) : (

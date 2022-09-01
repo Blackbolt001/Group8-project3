@@ -14,7 +14,6 @@ console.log("seeing home")
                 // Displays page info if logged in
                 ? (
                     <div>
-                        <h1>This is the Home page</h1>
                     </div>
                 ) : (
                     <div>
