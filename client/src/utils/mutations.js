@@ -52,4 +52,73 @@ export const LOGIN_USER = gql`
       }
     }
   }
+
 `;
+
+export const CREATE_CHAT = gql`
+mutation Mutation($user1: String!, $user2: String!) {
+  createChat(user_1: $user1, user_2: $user2) {
+    user_2
+    user_1
+  }
+}
+`;
+export const CREATE_MESSAGE = gql`
+mutation CreateMessage($content: String!, $user: String!, $chat: String!) {
+  createMessage(content: $content, user: $user, chat: $chat) {
+ content
+ user
+_id
+  }
+}
+`;
+
+export const REMOVE_PET = gql`
+mutation removePet($pet_Id:ID!) {
+  removePet(pet_Id:$pet_Id) {
+    pet_Id
+    pet_name
+    savedPets {
+      breed
+      age
+      nature
+      gender
+  }
+}
+} 
+` ;
+export const REMOVE_OWNER = gql`
+mutation removeOwner($ownerId:ID!) {
+  removeOwner(ownerId:$ownerId){
+    name
+    username
+    savedOwners {
+      age
+      interests
+      pets
+    }
+  }
+}
+`;
+
+export const SAVE_PET = gql`
+mutation savePet($petData:petData!) {
+  savePet(petData:$petData) {
+    pet_Id
+    pet_name
+    savedPets {
+      breed
+      age
+      nature
+      gender
+    }
+  }
+}
+`;
+//export const SEARCH_OWNERS = gql`
+//export const SAVED_OWNERS
+//export const SEARCH_PETS 
+//export const SAVED_PETS
+//mutation searchOwner`
+
+
