@@ -10,6 +10,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 
+import TextField from '@mui/material/TextField';
 function refreshMessages() {
   const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -41,8 +42,24 @@ export default function Messages() {
           </ListItem>
         ))}
       </List>
+    
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-      
+      <form >
+      <label>Enter your name:
+      <input 
+        type="text" 
+        name="username" 
+     
+      />
+      </label>
+      <label>Enter your age:
+        <input 
+          type="number" 
+          name="age" 
+        />
+        </label>
+        <input type="submit" />
+    </form>
       </Paper>
     </Box>
   );
