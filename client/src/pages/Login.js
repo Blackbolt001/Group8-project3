@@ -13,7 +13,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-    const Navigate = useNavigate();
+  const Navigate = useNavigate();
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -52,17 +52,17 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center mb-4">
- <FormControl>
-  <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
-  <RadioGroup
-    aria-labelledby="demo-controlled-radio-buttons-group"
-    name="controlled-radio-buttons-group"
-    onChange={handleChange}
-  >
-    <FormControlLabel value="female" control={<Radio />} label="Female" />
-    <FormControlLabel value="male" control={<Radio />} label="Male" />
-  </RadioGroup>
-</FormControl>
+      <FormControl>
+        <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
+        <RadioGroup
+          aria-labelledby="demo-controlled-radio-buttons-group"
+          name="controlled-radio-buttons-group"
+          onChange={handleChange}
+        >
+          <FormControlLabel value="female" control={<Radio />} label="Female" />
+          <FormControlLabel value="male" control={<Radio />} label="Male" />
+        </RadioGroup>
+      </FormControl>
       <div className="col-12 col-lg-10">
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
@@ -115,4 +115,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Login; 

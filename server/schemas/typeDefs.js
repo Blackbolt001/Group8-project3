@@ -3,14 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Owner {
     _id: ID!
-    name: String!
-    email:String!
-    petCount:Int
-    savedPets: [Pet]
-    username: String!
-    password: String!
+    name: String
+    email: String
+    username: String
+    password: String
     age: Int
-    interests: String!
+    interests: String
     pet: [Pet]
   }
 
@@ -18,57 +16,61 @@ const typeDefs = gql`
     _id: ID!
     user_1: String!
     user_2: String!
-   messages: [Message]
+    messages: [Message]
   }
+
   type Auth {
-    token:ID!
-    owner:Owner
+    token: ID!
+    owner: Owner
   }
 
   type Pet {
-    pet_id: ID!
-    pet_name: String!
-    breed: String!
+    pet_name: String
+    breed: String
     age: Int
-    nature: String!
-    gender: String!
+    nature: String
+    gender: String
   }
 
   type Message {
-   message_id: ID!
+   _id: ID!
    content: String!
    time: String
    user: String!
-   chat: [Chat]
+   chat: Chat
+   name: String
   }
 
   input petInput {
-    pet_id: ID!
     pet_name: String!
     breed: String!
     age: Int
     nature: String!
     gender: String!
+  }
+
+  input messageInput {
+    content: String!
+    username: String!
   }
 
   type Query {
     owner: [Owner]
-    me:Owner
-    pet(_id: String): [Pet]
-    chat: [Chat]
-    message(_id: String): [Message]
-
+    findOwnerById(_id: ID!): Owner
+    pet(_id: String): Owner
+    chat(user: String): [Chat]
+    message(user: String, chat: String): [Message]
   }
-
   
   type Mutation {
-    createOwner(username:String!,email:String!,password:String!):Auth
-    login(email:String!,password:String!):Auth
-    savePet(pet:petInput!):Owner
-    removePet(petId:ID!):Owner
+    createOwner(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    createPet(pet_name: String, age: Int, breed: String, gender: String, nature: String): Owner
+    updatePet(Pet: petInput!): Owner
     addPet(pet_name:String!):Owner
     createChat(user_1:String!, user_2: String!): Chat
-    createMessage(content: String!,user: String!,chat: String!): Chat
+    createMessage(content: String!,name: String!, user: String!,chat: String!): Message
+
   }
 `;
 
