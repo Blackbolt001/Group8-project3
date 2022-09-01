@@ -1,19 +1,38 @@
 import React from 'react';
-import { Navigate } from "react-router-dom";
-import Auth from '../utils/auth';
 import SwipeCard from '../components/SwipeCard'
+import cn from "classnames";
+import { ReactComponent as Hand } from "./hand.svg";
+
+import "./styles.scss";
+
+const LikeButton = () => {
+    const [liked, setLiked] = useState(null);
+
+
 const Swipe = () => {
 
     return(
         
-        <div className='bg-red-200'> 
-        <h1 className="text-2xl underline text-cyan-100">
-      Hello world!
-    </h1>
-        yesh
+        <div>
              <SwipeCard/>
         </div>
     )
+};
+
+return (
+    <button
+      onClick={() => setLiked(!liked)}
+      onAnimationEnd={() => setClicked(false)}
+      className={cn("like-button-wrapper", {
+        liked,
+      })}
+    >
+      <div className="like-button">
+        <Hand />
+        <span>Like</span>
+      </div>
+    </button>
+  );
 };
 
 export default Swipe;

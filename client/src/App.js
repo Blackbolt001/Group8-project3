@@ -63,6 +63,10 @@ function App() {
                 element={<Signup />}
               />
               <Route 
+                path="/chat" 
+                element={<Chat />}
+              />
+              <Route 
                 path="/swipe" 
                 element={<>
                   <Header />
@@ -87,7 +91,7 @@ function App() {
               />
               {/* User's profile. Can update info here */}
               <Route 
-                path="/profile/:ownerId" 
+                path="/profile" 
                 element={<>
                   <Header />
                   <Profile />
