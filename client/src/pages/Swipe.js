@@ -1,5 +1,7 @@
 import React from 'react';
 import SwipeCard from '../components/SwipeCard'
+
+
 const Swipe = () => {
 
     return(
@@ -9,5 +11,7 @@ const Swipe = () => {
         </div>
     )
 };
+
+
 
 export default Swipe;
