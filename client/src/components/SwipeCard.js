@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef } from 'react'
 import background from './Courses.PNG'
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
+import Info from './info'
 const db = [
   {
     name: 'Richard Hendricks',
@@ -67,6 +68,16 @@ function SwipeCard () {
     updateCurrentIndex(newIndex)
     await childRefs[newIndex].current.restoreCard()
   }
+
+  // useState to hold visibility
+  const [isVisible, setIsVisible] = useState(true);
+
+  // function to change visibility
+  const showInfo = event => {
+    setIsVisible(current => !current);
+  };
+
+  
   return (
     <div>
       <link
@@ -79,25 +90,34 @@ function SwipeCard () {
       />
       <h1>Meet New PlayPals!</h1>
       <div className='cardContainer'>
-        {db.map((character, index) => (
+        {db.map((owner, index) => (
           <div>
           <TinderCard
             ref={childRefs[index]}
             className='swipe'
-            key={character.name}
-            onSwipe={(dir) => swiped(dir, character.name, index)}
-            onCardLeftScreen={() => outOfFrame(character.name, index)}
+            key={owner.name}
+            onSwipe={(dir) => swiped(dir, owner.name, index)}
+            onCardLeftScreen={() => outOfFrame(owner.name, index)}
           >
             <div
               style={{ backgroundImage: `url(${background})` }}
               className='card'
             >
-              <h3>{character.name}</h3>
+              <h3 className="name">{owner.name}</h3>
             </div>
           </TinderCard>
             </div>
         ))}
+        <div className={`ownerInfo ${isVisible ? 'hidden' : 'visible'}`}>
+          <Info />
+        </div>
       </div>
+<br></br>
+      {/* Button to show current user's info */}
+      <button className='showOwnerInfo btn btn-info' onClick={showInfo}>
+        <h3>ℹ️</h3>
+      </button> 
+
       <div className='buttons'>
         <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('left')}>❌ Swipe left!</button>
         <button style={{ backgroundColor: !canGoBack && '#C3C4D3' }} onClick={() => goBack()}>Undo!</button>
@@ -109,7 +129,7 @@ function SwipeCard () {
         </h2>
       ) : (
         <h2 className='infoText'>
-          Swipe a card or press a button to get Restore Card button visible!
+          Swipe Left to pass! Swipe right to Match!
         </h2>
       )}
     </div>
