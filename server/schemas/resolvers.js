@@ -42,12 +42,16 @@ const resolvers = {
       return chat
     },
     createMessage: async (parent, args) => {
+      console.log(args)
+      console.log("done")
       const message = await Message.create(args);
-      Chat = await Chat.findByIdAndUpdate(
-        {_id:message.chat.id},
-        {$addtoSet: {messages:message}},
-        {new:true})
-      return chat
+      const Chat1 = await Chat.findByIdAndUpdate(
+        {_id:message.chat},
+        {$push: {messages:message.id}},
+        {new:true});
+        console.log("done")
+        console.log(Chat1)
+      return Chat1
     },
 
 

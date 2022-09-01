@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-// import Radio from '@mui/material/Radio';
-// import RadioGroup from '@mui/material/RadioGroup';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import FormControl from '@mui/material/FormControl';
-// import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 
 import Auth from '../utils/auth';
@@ -52,7 +52,7 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center mb-4">
- {/* <FormControl>
+ <FormControl>
   <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
   <RadioGroup
     aria-labelledby="demo-controlled-radio-buttons-group"
@@ -62,7 +62,7 @@ const Login = (props) => {
     <FormControlLabel value="female" control={<Radio />} label="Female" />
     <FormControlLabel value="male" control={<Radio />} label="Male" />
   </RadioGroup>
-</FormControl> */}
+</FormControl>
       <div className="col-12 col-lg-10">
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>

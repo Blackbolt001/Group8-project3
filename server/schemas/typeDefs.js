@@ -34,9 +34,11 @@ const typeDefs = gql`
   }
 
   type Message {
-    message_id: ID!
-    content: String!
-    username: String!
+   message_id: ID!
+   content: String!
+   time: String
+   user: String!
+   chat: [Chat]
   }
 
   input petInput {
