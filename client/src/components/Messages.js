@@ -10,6 +10,11 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_MESSAGE, QUERY_CHAT } from '../utils/queries';
+import { CREATE_MESSAGE } from '../utils/mutations';
+import { useParams, Link } from 'react-router-dom';
 
 function refreshMessages() {
   const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
@@ -20,9 +25,17 @@ function refreshMessages() {
 }
 
 export default function Messages() {
+    let { id } = useParams();
+    const { loading, data } = useQuery(QUERY_MESSAGE, {
+        variables: { chat: id, user: id },
+      });
+  const [createMessage, { error }] = useMutation(CREATE_MESSAGE);
+  const messages = data?.message || [];
+
   const [value, setValue] = React.useState(0);
   const ref = React.useRef(null);
-  const [messages, setMessages] = React.useState(() => refreshMessages());
+  const [messages1, setMessages] = React.useState(() => refreshMessages());
+  
 
   React.useEffect(() => {
     ref.current.ownerDocument.body.scrollTop = 0;
@@ -45,19 +58,12 @@ export default function Messages() {
     
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
       <form >
-      <label>Enter your name:
+      <label>Enter your message:
       <input 
         type="text" 
-        name="username" 
-     
+        name="message" 
       />
       </label>
-      <label>Enter your age:
-        <input 
-          type="number" 
-          name="age" 
-        />
-        </label>
         <input type="submit" />
     </form>
       </Paper>
