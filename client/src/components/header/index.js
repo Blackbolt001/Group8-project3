@@ -8,8 +8,7 @@ const Header = () => {
             <div className="">
                 <div>
                     <Link to="/profile">
-                        {/* Change to profile Icon later */}
-                        <h4>Profile</h4>
+                        <h4>👤</h4>
                     </Link>
                 </div>
                 <div>
@@ -17,8 +16,7 @@ const Header = () => {
                 </div>
                 <div>
                     <Link to="/chats">
-                        {/* Change to chat Icon later */}
-                        <h4>Chats</h4>
+                        <h4>💬</h4>
                     </Link>
                 </div>
             </div>   
