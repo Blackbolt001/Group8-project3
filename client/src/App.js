@@ -97,6 +97,13 @@ function App() {
                   <Profile />
                 </>}
               />
+              <Route 
+                path="/profile/:id" 
+                element={<>
+                  <Header />
+                  <Profile />
+                </>}
+              />
             </Routes>
           </div>
         </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import {useState} from 'react';
-import { Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_PET} from '../utils/mutations';
+import { QUERY_OWNER_BY_ID, QUERY_PET} from '../utils/queries';
 import ImgUpload from '../components/ImgUpload'
 
 const Profile = () => {
+    let { id } = useParams();
+
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
@@ -21,10 +24,14 @@ const Profile = () => {
         setIsVisible(current => !current);
     };
 
+    const {loading, data} = useQuery(QUERY_OWNER_BY_ID, {variables: {_id: id}});
+
+    const petData = data?.owner || {};
+
     // Takes pet info from db and sets to formState
     // --------- TODO: TARGET PET INFO FROM DB FOR EACH PET DATA IN USESTATE -----------
     const [formState, setFormState] = useState({ petName: '', petBreed: '', petAge: '', petNature: '', petGender: ''});
-    const [updatePet, { error, data }] = useMutation(UPDATE_PET);
+    // const [updatePet, { error, data }] = useMutation(UPDATE_PET);
 
     // update state based on form input changes
     const handleChange = (event) => {
@@ -40,15 +47,16 @@ const Profile = () => {
         event.preventDefault();
         console.log(formState);
 
-        try {
-          const { data } = await updatePet({
-            variables: { ...formState },
-          });
-        } catch (e) {
-          console.error(e);
-        }
+        // try {
+        //   const { data } = await updatePet({
+        //     variables: { ...formState },
+        //   });
+        // } catch (e) {
+        //   console.error(e);
+        // }
 
         setFormState({
+            // ---- TODO: Set to updated pet info -----
             petName: '', 
             petBreed: '' , 
             petAge: '', 

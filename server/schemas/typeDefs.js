@@ -3,13 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Owner {
     _id: ID!
-    name: String!
-    email: String!
-    savedPets: [Pet]
-    username: String!
-    password: String!
+    name: String
+    email: String
+    username: String
+    password: String
     age: Int
-    interests: String!
+    interests: String
     pet: [Pet]
   }
 
@@ -26,11 +25,11 @@ const typeDefs = gql`
   }
 
   type Pet {
-    pet_name: String!
-    breed: String!
+    pet_name: String
+    breed: String
     age: Int
-    nature: String!
-    gender: String!
+    nature: String
+    gender: String
   }
 
   type Message {
@@ -56,16 +55,16 @@ const typeDefs = gql`
 
   type Query {
     owner: [Owner]
-    me:Owner
-    pet(_id: String): [Pet]
+    findOwnerById(_id: ID!): Owner
+    pet(_id: String): Owner
     chat: [Chat]
     message(_id: String): [Message]
   }
-
+  
   type Mutation {
     createOwner(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    createPet(Pet: petInput!): Owner
+    createPet(pet_name: String, age: Int, breed: String, gender: String, nature: String): Owner
     updatePet(Pet: petInput!): Owner
     createChat(user_1: String!, user_2: String!): Chat
     createMessage(messages: messageInput!): Chat
