@@ -71,13 +71,7 @@ const Profile = () => {
                 // Displays profile info if logged in
                 ? (
                     <div>
-
                         <h1>Welcome to your profile page!</h1>
-                        
-                            {/* Logout button */}
-                            <div>
-                            <button className="" onClick={logout}>
-                        <h1>Your Profile Page</h1>
                         <div>
                             <ImgUpload />
                             <button className='editPetButton btn btn-block btn-info' onClick={editPet}>
@@ -140,7 +134,6 @@ const Profile = () => {
                         <div>
                             {/* Logout button */}
                             <button onClick={logout}>
-
                                 Logout
                             </button>
                         </div>
