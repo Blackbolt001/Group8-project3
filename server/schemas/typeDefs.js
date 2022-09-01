@@ -39,6 +39,7 @@ const typeDefs = gql`
    time: String
    user: String!
    chat: Chat
+   name: String
   }
 
   input petInput {
@@ -71,7 +72,7 @@ const typeDefs = gql`
     updatePet(Pet: petInput!): Owner
     addPet(pet_name:String!):Owner
     createChat(user_1:String!, user_2: String!): Chat
-    createMessage(content: String!, user: String!,chat: String!): Message
+    createMessage(content: String!,name: String!, user: String!,chat: String!): Message
   }
 `;
 

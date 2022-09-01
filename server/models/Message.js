@@ -15,9 +15,13 @@ const messageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'owner'
     },
-       chat:{
+    chat:{
         type: Schema.Types.ObjectId,
         ref: 'Chat'
+    },
+    name:{
+        type: String,
+        required: true,
     }
 });
 const Message = model('Message', messageSchema);

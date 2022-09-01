@@ -64,11 +64,11 @@ mutation Mutation($user1: String!, $user2: String!) {
 }
 `;
 export const CREATE_MESSAGE = gql`
-mutation CreateMessage($content: String!, $user: String!, $chat: String!) {
-  createMessage(content: $content, user: $user, chat: $chat) {
- content
- user
-_id
+mutation Mutation($content: String!, $name: String!, $user: String!, $chat: String!) {
+  createMessage(content: $content, name: $name, user: $user, chat: $chat) {
+    user
+    _id
+    name
   }
 }
 `;

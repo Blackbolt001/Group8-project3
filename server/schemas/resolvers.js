@@ -16,10 +16,7 @@ const resolvers = {
      return newchat
     },
     message: async (parent,{user, chat}) => {
-     
-      
-     test =  Message.find({user: user, chat: chat})
-     console.log(test)
+     test = Message.find({chat: chat})
      return test
     },
 
@@ -51,8 +48,10 @@ const resolvers = {
       return chat
     },
     createMessage: async (parent, args) => {
-      
+      console.log("message")
+      console.log(args);
       const message = await Message.create(args);
+
       const Chat1 = await Chat.findByIdAndUpdate(
         {_id:message.chat},
         {$push: {messages:message.id}},
