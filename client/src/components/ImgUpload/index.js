@@ -39,7 +39,6 @@ class ImgUpload extends Component {
 	// File content to be displayed after
 	// file upload is complete
 	fileData = () => {
-	
 	    if (this.state.selectedFile) {
 		
 		return (
@@ -54,8 +53,6 @@ class ImgUpload extends Component {
         } else {
             return (
             <div>
-                <br />
-                <h4>Choose before Pressing the Upload button</h4>
             </div>
             );
         }
@@ -70,6 +67,8 @@ class ImgUpload extends Component {
 				<button onClick={this.onFileUpload}>
 				Upload!
 				</button>
+                <br></br>
+                <div></div>
 			</div>
 		{this.fileData()}
 		</div>

@@ -5,10 +5,13 @@ const {signToken} = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    owner: async (parent, { username }) => {
-      return Owner.findOne({ username }).populate('pet')
+    owner: async () => {
+      return await Owner.find().populate('pet');
     },
 
+    findOwnerById: async(parent, {_id}) => {
+      return await Owner.findById(_id).populate('pet');
+    },
 
     chat: async (parent, { user }) => {
      newchat = Chat.find(
@@ -20,8 +23,8 @@ const resolvers = {
      return test
     },
 
-    pet: async (parent, { petId }) => {
-      return petSchema.findOne({ _id: petId });
+    pet: async (parent, { _id }) => {
+      return await Owner.findOne({ _id }).populate('pet');
     },
   },
 
@@ -67,16 +70,16 @@ const resolvers = {
       return {token, owner}
     },
 
-    createPet: async (parent, { petData }, context) => {
-     if (context.owner) {
+    createPet: async (parent, { pet_name, age, breed, gender, nature }, context) => {
+    //  if (context.owner) {
         const updatedPet = await Owner.findByIdAndUpdate(
-          { _id: context.owner._id },
-          { $push: { pet: petData } },
+          { _id: "631002d0d29ed904c8ece6b3" },
+          { $push: { pet: {"pet_name": pet_name, "age": age, "breed": breed, "gender": gender, "nature": nature} } },
           { new: true }
         );
 
         return updatedPet;
-      }
+      // }
 
       throw new AuthenticationError('You need to be logged in!');
      },

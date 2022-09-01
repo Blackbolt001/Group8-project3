@@ -34,7 +34,7 @@ const Signup = () => {
 
       Auth.login(data.createOwner.token);
       // Navigates new user to profile page
-      Navigate('/profile')
+      Navigate(`/profile/${data.createOwner._id}`)
     } catch (e) {
       console.error(e);
     }

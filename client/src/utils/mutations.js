@@ -33,11 +33,16 @@ export const UPDATE_PET = gql`
   mutation updatePet($pet_name: String!,$breed: String!, $age: Int, $nature: String!, $gender: String!) {
     updatePet(pet_name: $pet_name, breed: $breed, age: $age, nature: $nature, gender: $gender) {
       _id
-      pet_name
-      breed
-      age
-      nature
-      gender
+      username
+      email
+      pet {
+        _id
+        pet_name
+        breed
+        age
+        nature
+        gender 
+      }
     }
   }
 `;
@@ -101,24 +106,11 @@ mutation removeOwner($ownerId:ID!) {
 }
 `;
 
-export const SAVE_PET = gql`
-mutation savePet($petData:petData!) {
-  savePet(petData:$petData) {
-    pet_Id
-    pet_name
-    savedPets {
-      breed
-      age
-      nature
-      gender
-    }
-  }
-}
-`;
-//export const SEARCH_OWNERS = gql`
-//export const SAVED_OWNERS
-//export const SEARCH_PETS 
-//export const SAVED_PETS
-//mutation searchOwner`
-
-
+// export const UPLOAD_IMAGE = gql`
+//   mutation uploadImage() {
+//     uploadImage() {
+//       _id
+      
+//     }
+//   }
+// `
