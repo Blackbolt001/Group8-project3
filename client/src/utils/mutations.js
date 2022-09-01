@@ -52,11 +52,19 @@ export const LOGIN_USER = gql`
 export const CREATE_CHAT = gql`
 mutation Mutation($user1: String!, $user2: String!) {
   createChat(user_1: $user1, user_2: $user2) {
-    _id
-user_1
-user_2
+    user_2
+    user_1
   }
+}
+`;
+export const CREATE_MESSAGE = gql`
+mutation CreateMessage($content: String!, $user: String!, $chat: String!) {
+  createMessage(content: $content, user: $user, chat: $chat) {
+ content
+ user
+_id
   }
+}
 `;
 
 export const REMOVE_PET = gql`

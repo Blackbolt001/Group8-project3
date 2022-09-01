@@ -26,6 +26,25 @@ export const QUERY_PET = gql`
     }
   }
 `;
+
+export const QUERY_MESSAGE = gql`
+query Message($user: String, $chat: String) {
+  message(user: $user, chat: $chat) {
+    content
+    user
+  }
+}
+`;
+export const QUERY_CHAT = gql`
+query Query {
+  chat {
+    user_1
+    user_2
+  }
+}
+`;
+
+
 export const GET_ME = gql`
 {   
 me

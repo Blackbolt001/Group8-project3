@@ -35,11 +35,11 @@ const typeDefs = gql`
   }
 
   type Message {
-   message_id: ID!
+   _id: ID!
    content: String!
    time: String
    user: String!
-   chat: [Chat]
+   chat: Chat
   }
 
   input petInput {
@@ -53,10 +53,10 @@ const typeDefs = gql`
 
   type Query {
     owner: [Owner]
-    me:Owner
+    me: Owner
     pet(_id: String): [Pet]
-    chat: [Chat]
-    message(_id: String): [Message]
+    chat(user: String): [Chat]
+    message(user: String, chat: String): [Message]
 
   }
 
@@ -68,7 +68,7 @@ const typeDefs = gql`
     removePet(petId:ID!):Owner
     addPet(pet_name:String!):Owner
     createChat(user_1:String!, user_2: String!): Chat
-    createMessage(content: String!,user: String!,chat: String!): Chat
+    createMessage(content: String!, user: String!,chat: String!): Message
   }
 `;
 
