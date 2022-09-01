@@ -61,21 +61,23 @@ const Profile = () => {
                 // Displays profile info if logged in
                 ? (
                     <div>
-                        <h1>This is the Profile page</h1>
+                        <h1>Your Profile Page</h1>
                         <div>
                             {/* Logout button */}
                             <button onClick={logout}>
                                 Logout
                             </button>
                         </div>
+                        <br></br>
                         <div>
                             <button className='editPetButton btn btn-block btn-info' onClick={editPet}>
                                 Edit Pet Info
                             </button>
                         </div>
                         {/* Form to update pet info */}
-                        <div className={`editPetForm ${isVisible ? 'visible' : 'hidden'}`}>
+                        <div className={`editPetForm ${isVisible ? 'hidden' : 'visible'}`}>
                             <form onSubmit={handleFormSubmit}>
+                                <p> Pet's Name:</p>
                                 <input 
                                     className="form-input"
                                     name="petName"
@@ -83,6 +85,7 @@ const Profile = () => {
                                     value={formState.petName}
                                     onChange={handleChange}
                                 />
+                                <p> Breed:</p>
                                 <input 
                                     className="form-input"
                                     name="petBreed"
@@ -90,6 +93,7 @@ const Profile = () => {
                                     value={formState.petBreed}
                                     onChange={handleChange}
                                 />
+                                <p> Age:</p>
                                 <input 
                                     className="form-input"
                                     name="petAge"
@@ -97,6 +101,7 @@ const Profile = () => {
                                     value={formState.petAge}
                                     onChange={handleChange}
                                 />
+                                <p> Nature:</p>
                                 <input 
                                     className="form-input"
                                     name="petNature"
@@ -104,6 +109,7 @@ const Profile = () => {
                                     value={formState.petNature}
                                     onChange={handleChange}
                                 />
+                                <p> Gender:</p>
                                 <input 
                                     className="form-input"
                                     name="petGender"

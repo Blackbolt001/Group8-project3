@@ -62,7 +62,7 @@ const resolvers = {
     },
 
     createPet: async (parent, { petData }, context) => {
-     // if (context.owner) {
+     if (context.owner) {
         const updatedPet = await Owner.findByIdAndUpdate(
           { _id: context.owner._id },
           { $push: { pet: petData } },
@@ -70,9 +70,9 @@ const resolvers = {
         );
 
         return updatedPet;
-      //}
+      }
 
-      // throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('You need to be logged in!');
      },
 
     updatePet: async(parent, {petData}, context) => {
