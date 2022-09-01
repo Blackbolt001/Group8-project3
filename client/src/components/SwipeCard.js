@@ -7,25 +7,76 @@ import Info from './info'
 const db = [
   {
     name: 'Bill',
-    url: './test_images/Bill.jpg'
+    url: './test_images/Bill.jpg',
+    username: 'BillyBob',
+    interests: 'Bowling and coffee',
+    age: '54',
+    pet: {
+      pet_name: "Scrappy Doo",
+      breed: "Mutt",
+      age: "1",
+      nature: "Hyper",
+      gender: "Male"
+    }
   },
   {
     name: 'Torrence',
-    url: './test_images/Torrence.jpg'
+    url: './test_images/Torrence.jpg',
+    username: 'Torrence&Chaz',
+    age: '23',
+    interests: 'Latest fashion',
+    pet: {
+      pet_name: "Chaz",
+      breed: "Buldog",
+      age: "3",
+      nature: "Lazy",
+      gender: "Male"
+    }
   },
   {
     name: 'Will',
-    url: './test_images/Will.jpg'
+    url: './test_images/Will.jpg',
+    username: 'I am Legend',
+    age: '38',
+    interests: 'Mannequins',
+    pet: {
+      pet_name: "Sam",
+      breed: "German Shepherd",
+      age: "4",
+      nature: "Well Trained",
+      gender: "Female"
+    }
   },
   {
     name: 'Ray',
-    url: './test_images/Ray.jpg'
+    url: './test_images/Ray.jpg',
+    username: 'MantaRay',
+    interests: 'House Decoration',
+    age: '32',
+    pet: {
+      pet_name: "Marshmallow",
+      breed: "Husky",
+      age: "4",
+      nature: "Sleepy",
+      gender: "Female"
+    }
   },
   {
     name: 'Jill',
-    url: './test_images/Jill.jpg'
+    url: './test_images/Jill.jpg',
+    username: 'Jill on a Hill',
+    interests: 'Gardening!',
+    age: '32',
+    pet: {
+      pet_name: "Daisy",
+      breed: "Labrador",
+      age: "5",
+      nature: "Calm",
+      gender: "Female"
+    }
   }
 ]
+
 function SwipeCard () {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
@@ -104,14 +155,30 @@ function SwipeCard () {
               style={{ backgroundImage: `url(${owner.url})` }}
               className='card'
             >
+            <div className={`ownerInfo ${isVisible ? 'hidden' : 'visible'}`}>
+              <div>
+                <ul>
+                    Pet Info
+                    <li>Pet's Name: {owner.pet.pet_name}</li>
+                    <li>Pet's Breed: {owner.pet.breed}</li>
+                    <li>Pet's Age: {owner.pet.age}</li>
+                    <li>Pet's Nature: {owner.pet.nature}</li>
+                    <li>Pet's Gender: {owner.pet.gender}</li>
+                </ul>
+                <ul>
+                    Owner Info
+                    <li>Username: {owner.name}</li>
+                    <li>Age: {owner.age}</li>
+                    <li>Interests: {owner.interests}</li>
+                </ul>
+              </div>
+            </div>
               <h3 className="name">{owner.name}</h3>
             </div>
           </TinderCard>
             </div>
         ))}
-        <div className={`ownerInfo ${isVisible ? 'hidden' : 'visible'}`}>
-          <Info />
-        </div>
+
       </div>
 <br></br>
       {/* Button to show current user's info */}

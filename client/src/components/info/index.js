@@ -14,7 +14,7 @@ const Info = () => {
             </ul>
             <ul>
                 Owner Info
-                <li>Username: </li>
+                <li>Username:</li>
                 <li>Age: </li>
                 <li>Interests: </li>
             </ul>
