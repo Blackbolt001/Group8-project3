@@ -47,6 +47,7 @@ const resolvers = {
     },
 
     createChat: async (parent, args) => {
+      console.log("creating chat")
       const chat = await Chat.create(args);
       return chat
     },
@@ -70,6 +71,7 @@ const resolvers = {
       return {token, owner}
     },
     addLike: async (parent, {user_1,user_2}) => {
+      console.log("YOOO WE LIKED")
       const updatedOwner = await Owner.findByIdAndUpdate(
         { _id: user_1 },
         { $push: { likes: user_2} },

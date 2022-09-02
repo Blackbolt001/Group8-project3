@@ -71,7 +71,7 @@ const Profile = () => {
                 // Displays profile info if logged in
                 ? (
                     <div>
-                        <h1>Your Profile Page</h1>
+                        <h1>Welcome to your profile page!</h1>
                         <div>
                             <ImgUpload />
                             <button className='editPetButton btn btn-block btn-info' onClick={editPet}>
