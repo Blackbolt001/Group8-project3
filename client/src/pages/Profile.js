@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import {useState} from 'react';
 import { useParams, Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
@@ -71,7 +70,6 @@ const Profile = () => {
                 // Displays profile info if logged in
                 ? (
                     <div>
-
                         <h1>Welcome to your profile page!</h1>
                         
                             {/* Logout button */}
