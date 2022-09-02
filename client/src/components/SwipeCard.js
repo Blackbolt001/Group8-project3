@@ -74,7 +74,72 @@ const db = [
       nature: "Calm",
       gender: "Female"
     }
-  }
+  },
+    {
+
+    name: 'Richard Hendricks',
+    url: './test_images/richard.jpg',
+    username: 'KingRich',
+    interests: 'Coding',
+    age:'150',
+    pet: {
+      pet_name:"Pikachu",
+      url:''
+    }
+  },
+  {
+    name: 'Erlich Bachman',
+    url: './test_images/erlich.jpg'
+  },
+  {
+    name: 'Monica Hall',
+    url: './test_images/monica.jpg'
+  },
+  {
+    name: 'Jared Dunn',
+    url: './test_images/jared.jpg'
+  },
+  {
+    name: 'Dinesh Chugtai',
+    url: './test_images/dinesh.jpg'
+  },
+  {
+    name: 'Bill',
+    url: './test_images/Bill.jpg'
+  },
+  {
+    name: 'Torrence',
+    url: './test_images/Torrence.jpg'
+  },
+  {
+    name: 'Will',
+    url: './test_images/Will.jpg'
+  },
+  {
+    name: 'Ray',
+    url: './test_images/Ray.jpg'
+  },
+  {
+    name: 'Jill',
+    url: './test_images/Jill.jpg'
+  },
+
+{
+  name: 'Pikachu',
+  url: './test_images/pikachu.jpg'
+},
+{
+  name: 'lizzy',
+  url: './test_images/lizzy.jpg'
+},
+{
+  name: 'lonny',
+  url: './test_images/lizard.jpg'
+},
+{
+  name: 'Bunny',
+  url: './test_images/bunny.jpg'
+}
 ]
 
 function SwipeCard () {
