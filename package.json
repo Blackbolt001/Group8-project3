@@ -1,5 +1,5 @@
 {
-  "name": "Paws-N-Play",
+  "name": "paws-n-play",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+// import BottomNavigation from '@mui/material/BottomNavigation';
+// import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
-import TextField from '@mui/material/TextField';
-import { useNavigate } from 'react-router-dom';
+// import TextField from '@mui/material/TextField';
+// import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_MESSAGE, QUERY_CHAT } from '../utils/queries';
+import { QUERY_MESSAGE } from '../utils/queries';
 import { CREATE_MESSAGE } from '../utils/mutations';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 export default function Messages() {
     let { id } = useParams();
@@ -31,7 +31,7 @@ export default function Messages() {
  
   function Messagehandler(event){
     event.preventDefault();
-    const { name, value,message } = event.target
+    const { name, value, message } = event.target
   setFormData(value)
   console.log(formData)
 }
@@ -80,16 +80,16 @@ const Messagesubmit = async (event) => {
   );
 }
 
-const messageExamples = [
-  {
-    content: 'Brunch this week?',
-    secondary: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
-    person: '/static/images/avatar/5.jpg',
-  },
-  {
-    content: 'Birthday Gift',
-    secondary: `Do you have a suggestion for a good present for John on his work
-      anniversary. I am really confused & would love your thoughts on it.`,
-    person: '/static/images/avatar/1.jpg',
-  },
-];
+// const messageExamples = [
+//   {
+//     content: 'Brunch this week?',
+//     secondary: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
+//     person: '/static/images/avatar/5.jpg',
+//   },
+//   {
+//     content: 'Birthday Gift',
+//     secondary: `Do you have a suggestion for a good present for John on his work
+//       anniversary. I am really confused & would love your thoughts on it.`,
+//     person: '/static/images/avatar/1.jpg',
+//   },
+// ];

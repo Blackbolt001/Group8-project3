@@ -49,7 +49,7 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
-  // remove a book from `savedBooks`
+
   async deletePet({ owner, params }, res) {
     const updatedOwner = await Owner.findOneAndUpdate(
       { _id: owner._id },
