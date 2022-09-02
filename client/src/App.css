@@ -6,7 +6,15 @@
     min-height: 100vh;
     overflow: hidden;
     /* background: linear-gradient(#fff, #999); */
-    background: linear-gradient(#e66465, #9198e5);
+
+    /* background: linear-gradient(#e66465, #9198e5); */
+    background-image: url('https://media.giphy.com/media/3osxYsSSxjWhZw0BUY/giphy.gif');
+    background-size: cover;
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-repeat: no-repeat;
+    background: linear-gradient(#85c7f7, #4ad753);
+
   }
   
   #root>div {
@@ -37,7 +45,7 @@
     text-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
   }
   
-  h2 {
+  h2, h3, h4, h5, p{
     color: #fff;
   }
   
@@ -122,5 +130,28 @@
     64%  { transform: scale(1,1) }
     100% { transform: scale(1,1) }
   }
+
+.visible {
+    display: block;
+  }
   
-  
+.hidden {
+    display: none;
+  }
+
+.name {
+  position: relative;
+  color: black;
+  text-shadow:         
+    0.07em 0 black,
+    0 0.07em black,
+    -0.07em 0 black,
+    0 -0.07em black;
+}
+
+.ownerInfo {
+  color: white;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.85) inset;
+}

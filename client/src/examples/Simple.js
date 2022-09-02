@@ -21,7 +21,7 @@ const db = [
   }
 ]
 
-function petExamples () {
+function Simple () {
   const characters = db
   const [lastDirection, setLastDirection] = useState()
 
@@ -53,4 +53,4 @@ function petExamples () {
   )
 }
 
-export default petExamples
+export default Simple

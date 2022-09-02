@@ -22,10 +22,30 @@ const db = [
   {
     name: 'Dinesh Chugtai',
     url: './img/dinesh.jpg'
+  },
+  {
+    name: 'Bill',
+    url: './test_images/Bill.jpg'
+  },
+  {
+    name: 'Torrence',
+    url: './test_images/Torrence.jpg'
+  },
+  {
+    name: 'Will',
+    url: './test_images/Will.jpg'
+  },
+  {
+    name: 'Ray',
+    url: './test_images/Ray.jpg'
+  },
+  {
+    name: 'Jill',
+    url: './test_images/Jill.jpg'
   }
 ]
 
-function ownerExamples () {
+function Advanced () {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
   const currentIndexRef = useRef(currentIndex)
@@ -117,4 +137,4 @@ function ownerExamples () {
   )
 }
 
-export default ownerExamples
+export default Advanced
