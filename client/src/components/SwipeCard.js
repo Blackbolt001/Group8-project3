@@ -1,13 +1,9 @@
-import React, { useState } from 'react'
-import './App.css'
-import Switch from 'react-ios-switch'
-import Advanced from '../examples/Advanced'
-import Simple from '../examples/Simple'
+import React, { useState, useMemo, useRef } from 'react'
+// import background from './Courses.PNG'
+// import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
+import Info from './info'
 
-
-function App () {
-  const [showAdvanced, setShowOwnerAdvanced] = useState(true)
 const db = [
   {
     name: 'Bill',
@@ -125,13 +121,17 @@ function SwipeCard () {
     await childRefs[newIndex].current.restoreCard()
   }
 
+  // useState to hold visibility
+  const [isVisible, setIsVisible] = useState(true);
+
+  // function to change visibility
+  const showInfo = event => {
+    setIsVisible(current => !current);
+  };
+
+  
   return (
-    <div className='app'>
-      {showAdvanced ? <Advanced/> : <Simple/>}
-      <div className='row'>
-        <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowOwnerAdvanced} />
-   </div>
-   <div>
+    <div>
       <link
         href='https://fonts.googleapis.com/css?family=Damion&display=swap'
         rel='stylesheet'
@@ -144,7 +144,7 @@ function SwipeCard () {
       <div className='cardContainer'>
         {db.map((owner, index) => (
           <div>
-          <TinderCard>
+          <TinderCard
             ref={childRefs[index]}
             className='swipe'
             key={owner.name}
@@ -180,8 +180,27 @@ function SwipeCard () {
         ))}
 
       </div>
+<br></br>
+      {/* Button to show current user's info */}
+      <button className='showOwnerInfo btn btn-info' onClick={showInfo}>
+        <h3>ℹ️</h3>
+      </button> 
+
+      <div className='buttons'>
+        <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('left')}>❌ Swipe left!</button>
+        <button style={{ backgroundColor: !canGoBack && '#C3C4D3' }} onClick={() => goBack()}>Undo!</button>
+        <button style={{ backgroundColor: !canSwipe && '#C3C4D3' }} onClick={() => swipe('right')}>✅ Swipe right!</button>
+      </div>
+      {lastDirection ? (
+        <h2 key={lastDirection} className='infoText'>
+          You swiped {lastDirection}
+        </h2>
+      ) : (
+        <h2 className='infoText'>
+          Swipe Left to pass! Swipe right to Match!
+        </h2>
+      )}
     </div>
   )
 }
-
-export default App
+export default SwipeCard
