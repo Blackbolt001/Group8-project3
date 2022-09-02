@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import {useState} from 'react';
 import { useParams, Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
-import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_PET} from '../utils/mutations';
-import { QUERY_OWNER_BY_ID, QUERY_PET} from '../utils/queries';
+import { useQuery } from '@apollo/client';
+// import { UPDATE_PET} from '../utils/mutations';
+import { QUERY_OWNER_BY_ID} from '../utils/queries';
 import ImgUpload from '../components/ImgUpload'
 
 const Profile = () => {

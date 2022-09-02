@@ -2,7 +2,6 @@ import React, { useState, useMemo, useRef } from 'react'
 // import background from './Courses.PNG'
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
-import Info from './info'
 
 const db = [
   {
