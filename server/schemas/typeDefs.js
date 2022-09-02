@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String
     username: String
     password: String
+    likes:[Owner]
     age: Int
     interests: String
     pet: [Pet]
@@ -60,6 +61,7 @@ const typeDefs = gql`
     pet(_id: String): Owner
     chat(user: String): [Chat]
     message(user: String, chat: String): [Message]
+
   }
   
   type Mutation {
@@ -70,7 +72,7 @@ const typeDefs = gql`
     addPet(pet_name:String!):Owner
     createChat(user_1:String!, user_2: String!): Chat
     createMessage(content: String!,name: String!, user: String!,chat: String!): Message
-
+    addLike(user_1:String!, user_2: String!): Owner
   }
 `;
 

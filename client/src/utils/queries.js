@@ -11,6 +11,14 @@ export const QUERY_OWNER= gql`
       interests
       pet{
         pet_name
+
+      }
+      likes{
+        name
+        username
+        _id
+        age
+        
       }
     }
   }

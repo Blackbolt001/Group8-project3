@@ -22,6 +22,10 @@ const ownerSchema = new Schema({
         unique:true,
         match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
+    likes:[{
+        type: Schema.Types.ObjectId,
+        ref: 'owner'
+    }],
     age: {
         type: Number,
         minimum: [16, 'You must be at least 16 years old'],

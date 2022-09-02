@@ -9,8 +9,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { useQuery } from '@apollo/client';
-import { QUERY_CHAT } from '../utils/queries';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_MESSAGE, QUERY_CHAT } from '../utils/queries';
+import { CREATE_MESSAGE } from '../utils/mutations';
+import { useParams} from 'react-router-dom';
+
 
 const ChatHome = () => {
 

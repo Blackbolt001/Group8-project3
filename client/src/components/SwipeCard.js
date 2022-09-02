@@ -2,8 +2,15 @@ import React, { useState, useMemo, useRef } from 'react'
 // import background from './Courses.PNG'
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card'
+import Info from './info'
+import Auth from '../utils/auth';
+import Typography from '@mui/material/Typography';
+import { QUERY_OWNER } from '../utils/queries';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_owner, QUERY_CHAT } from '../utils/queries';
+import { ADD_LIKE , CREATE_CHAT} from '../utils/mutations';
+const db1 = [
 
-const db = [
   {
     name: 'Bill',
     url: './test_images/Bill.jpg',
@@ -77,8 +84,17 @@ const db = [
 ]
 
 function SwipeCard () {
+  const userlo = Auth.getProfile().data._id
+  const { loading, data } = useQuery(QUERY_OWNER);
+  const db = data?.owner || [];
+  const [addLike, { error }] = useMutation(ADD_LIKE);
+  const [createChat, { errorchat }] = useMutation(CREATE_CHAT);
+  const [ownerNum, setOwnerNum] = useState()
+  const [iterNum, setIterNum] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
+
+console.log(ownerNum)
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
   const childRefs = useMemo(
@@ -89,15 +105,43 @@ function SwipeCard () {
     []
   )
   const updateCurrentIndex = (val) => {
+    setIterNum(iterNum+1);
     setCurrentIndex(val)
     currentIndexRef.current = val
   }
   const canGoBack = currentIndex < db.length - 1
   const canSwipe = currentIndex >= 0
+  console.log(ownerNum)
   // set last direction and decrease current index
-  const swiped = (direction, nameToDelete, index) => {
+  const swiped = async (direction, nameToDelete, index, last) => {
+    setOwnerNum(last)
+    console.log(nameToDelete)
+    const {_id, password, username,} = nameToDelete
     setLastDirection(direction)
     updateCurrentIndex(index - 1)
+    console.log(lastDirection)
+    if(direction=="right"){
+      try {
+        const owner = await addLike({
+          variables:{
+          user1:userlo, user2:last
+        }});
+        let obj = nameToDelete.likes.find(like => like._id == userlo);
+        console.log(obj);
+       if(obj){
+        const chat = await createChat({
+          variables:{
+          user1:userlo, user2:last
+        }});
+       }
+        console.log(owner)
+      } catch (err) {
+        console.error(err);
+      }
+    }
+   
+    updateCurrentIndex(index - 1)
+    console.log(lastDirection)
   }
   const outOfFrame = (name, idx) => {
     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
@@ -146,12 +190,12 @@ function SwipeCard () {
           <TinderCard
             ref={childRefs[index]}
             className='swipe'
-            key={owner.name}
-            onSwipe={(dir) => swiped(dir, owner.name, index)}
-            onCardLeftScreen={() => outOfFrame(owner.name, index)}
+            key={owner._id}
+            onSwipe={(dir) => swiped(dir, owner, index, owner._id)}
+            onCardLeftScreen={() => outOfFrame(owner._id, index)}
           >
             <div
-              style={{ backgroundImage: `url(${owner.url})` }}
+              style={{ backgroundImage: `url(./test_images/Jill.jpg)` }}
               className='card'
             >
             <div className={`ownerInfo ${isVisible ? 'hidden' : 'visible'}`}>
