@@ -37,11 +37,17 @@ Quickly swipe through potential candidates and conveniently chat in app with oth
 
 ## Visuals
 
-Please login 
-![Screen Shot 2022-09-01 at 7 40 06 PM](https://user-images.githubusercontent.com/106899178/188044805-b30366b0-2aa1-4ff5-8d29-b19279b286fa.png)
+ Please login 
 
-Swipe right or Swipe left
+![Screen Shot 2022-09-01 at 11 12 01 PM](https://user-images.githubusercontent.com/106899178/188053069-cc885852-7086-4533-9234-de49d48e5df8.png)
+
+ Swipe right or Swipe left
+
 ![Screen Shot 2022-09-01 at 10 10 44 PM](https://user-images.githubusercontent.com/106899178/188044712-da2bf2fb-d3ae-4af9-84dc-6b31858d2377.png)
+
+ Profile: Owner and pet
+
+![Screen Shot 2022-09-01 at 11 09 54 PM](https://user-images.githubusercontent.com/106899178/188053176-8ca2f43b-6fdb-4a3b-9147-c2faa0957717.png)
 
 ## Links
 
