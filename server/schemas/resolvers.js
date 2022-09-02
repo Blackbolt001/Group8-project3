@@ -69,6 +69,14 @@ const resolvers = {
       const token = signToken(owner);
       return {token, owner}
     },
+    addLike: async (parent, {user_1,user_2}) => {
+      const updatedOwner = await Owner.findByIdAndUpdate(
+        { _id: user_1 },
+        { $push: { likes: user_2} },
+        { new: true }
+      );
+      return updatedOwner
+    },
 
     createPet: async (parent, { pet_name, age, breed, gender, nature }, context) => {
     //  if (context.owner) {

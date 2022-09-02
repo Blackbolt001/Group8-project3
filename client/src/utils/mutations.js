@@ -77,6 +77,14 @@ mutation Mutation($content: String!, $name: String!, $user: String!, $chat: Stri
   }
 }
 `;
+export const ADD_LIKE = gql`
+mutation Mutation($user1: String!, $user2: String!) {
+  addLike(user_1: $user1, user_2: $user2) {
+    password
+    email
+  }
+}
+`;
 
 export const REMOVE_PET = gql`
 mutation removePet($pet_Id:ID!) {
