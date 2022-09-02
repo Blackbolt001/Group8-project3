@@ -6,14 +6,11 @@ import SwipeCard from '../components/SwipeCard'
 const Home = () => {
     return(
         <div> 
-            <div>
-                <SwipeCard/>
-            </div>
-
             {Auth.loggedIn()
                 // Displays page info if logged in
                 ? (
                     <div>
+                        <SwipeCard/>
                     </div>
                 ) : (
                     <div>
