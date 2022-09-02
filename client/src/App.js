@@ -41,7 +41,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <div className="flex-column justify-center align-center w-50 bg-primary">
           <div className="container">
             <Routes>
               {/* Home page with profile cards */}
