@@ -10,6 +10,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_owner, QUERY_CHAT } from '../utils/queries';
 import { ADD_LIKE , CREATE_CHAT} from '../utils/mutations';
 const db1 = [
+
   {
     name: 'Bill',
     url: './test_images/Bill.jpg',

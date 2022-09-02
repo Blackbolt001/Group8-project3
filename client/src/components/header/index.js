@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './logo-no-background.png'
 
 const Header = () => {
 
@@ -13,7 +14,8 @@ const Header = () => {
                 </div>
                 <div>
                     <Link to='/'>
-                        <h2>Paws N' Play</h2>
+                        {/* <h2>Paws N' Play</h2> */}
+                        <img src={Logo} alt='Paws-N-Play Logo' width='150px' height='100px'></img>
                     </Link>
                 </div>
                 <div>
