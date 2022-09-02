@@ -14,11 +14,6 @@ import { QUERY_CHAT } from '../utils/queries';
 
 const ChatHome = () => {
 
-    const logout = (event) => {
-        event.preventDefault();
-        Auth.logout();
-    };
-
    let id = Auth.getProfile().data._id
     const { loading, data } = useQuery(QUERY_CHAT, {
         variables:{user: id}
@@ -32,55 +27,47 @@ const ChatHome = () => {
                 // Displays profile info if logged in
                 ? (
                     <div>
+                      <h1>Chat Home Page</h1>
 
-                        <h1>Chat Home Page</h1>
-                        
-                            {/* Logout button */}
-                            <div>
-                            <button className="" onClick={logout}>
-                                Logout
-                            </button>
-                        </div>
+                      {loading ? (
+                        <div>Loading...</div>
+                      ) : (
+                        <form >
+                            {chatList.map((chat) => {
+                              console.log(chat)    
 
-               {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <form >
-              {chatList.map((chat) => {
-                           console.log(chat)      
-                return (
-                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    
-                    <ListItem key={chat._id} alignItems="flex-start">
-                    <Link to={{ pathname: `/chat/${chat._id}` }}>
-                      <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                      </ListItemAvatar>
-                      
-                      <ListItemText
-                        primary="Get to know someone paw-some"
-                        secondary={
-                          <React.Fragment>
-                            <Typography
-                              sx={{ display: 'inline' }}
-                              component="span"
-                              variant="body2"
-                              color="text.primary"
-                            >
-                            </Typography>
-                           
-                          </React.Fragment>
-                        }
-                      />
-                      </Link>
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </List>
-                );
-              })}
-          </form>
-        )}
-
+                              return (
+                                  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                                  
+                                  <ListItem key={chat._id} alignItems="flex-start">
+                                  <Link to={{ pathname: `/chat/${chat._id}` }}>
+                                    <ListItemAvatar>
+                                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                    </ListItemAvatar>
+                                    
+                                    <ListItemText
+                                      primary="Get to know someone paw-some"
+                                      secondary={
+                                        <React.Fragment>
+                                          <Typography
+                                            sx={{ display: 'inline' }}
+                                            component="span"
+                                            variant="body2"
+                                            color="text.primary"
+                                          >
+                                          </Typography>
+                                        
+                                        </React.Fragment>
+                                      }
+                                    />
+                                    </Link>
+                                  </ListItem>
+                                  <Divider variant="inset" component="li" />
+                                </List>
+                              );
+                            })}
+                        </form>
+                      )}
                     </div>
                 ) : (
                     <div>
@@ -88,7 +75,7 @@ const ChatHome = () => {
                         <Navigate to='/login' replace={true} />
                     </div>
             )}
-        </div>
+      </div>
     )
 }
 
